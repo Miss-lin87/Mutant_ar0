@@ -1,22 +1,19 @@
-package se.linda;
+package se.linda.functions;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
-public class functions {
+public class funcs {
+    Logger message = Logger.getLogger(getClass().getName());
+
     static String user_input_string(String input_line){
         Scanner input_from_user = new Scanner(System.in);
-        System.out.println(input_line);
-        String returning_input = input_from_user.nextLine();
-        return returning_input;
+        message.info(input_line);
+        return input_from_user.nextLine();
     }
 
     static Integer user_input_integer(){
         Scanner input_from_user = new Scanner(System.in);
-        System.out.println("Please enter a number: ");
-        Integer returning_integer = input_from_user.nextInt();
-        return returning_integer;
-    }
-    
-    static String find_class(Object input){
-        return input.getClass().getName();
+        message.info("Please enter a number: ");
+        return input_from_user.nextInt();
     }
 }

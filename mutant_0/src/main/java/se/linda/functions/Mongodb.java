@@ -1,1 +1,1 @@
-package se.linda;
+package se.linda.functions;

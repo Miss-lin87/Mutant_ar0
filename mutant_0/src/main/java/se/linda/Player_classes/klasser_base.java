@@ -1,21 +1,20 @@
-package se.linda.Player_classes;
+package se.linda.player_classes;
 
-import java.util.Map;
-
-    interface klass{
-        public void getBeststat();
-        public Map<String, Integer> get_stats();
-        public String select_talent();
-        public Map<String, Integer> make_equipment();
+public class klasser_base{
+    public interface klass{
+        void getBeststat();
+        void getSpecialskill();
+        Talent talent();
+        Equipment equipment();
+        String special_equipmet();
     }
-
-class klasser_base{
-    private Map<String, String> Beststat;
-    
-    public Map<String, String> getBeststat(String class){
-        Beststat.get(class);
-        return Beststat;
-    }
-
-
 }
+
+/* krossare
+skrotskalle
+zonstrykare
+fixare
+mutant med hund
+krönikör
+boss
+slav */
