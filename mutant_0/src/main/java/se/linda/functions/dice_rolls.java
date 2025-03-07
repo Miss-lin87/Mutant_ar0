@@ -1,9 +1,9 @@
-package se.linda.functions;
+package java.se.linda.functions;
 
 public class dice_rolls {
 
     public int D6(){
-        return (int)(Random.nextInt(7));
+        return (int)(Math.random()*7);
     }
 
     public String D66(){
