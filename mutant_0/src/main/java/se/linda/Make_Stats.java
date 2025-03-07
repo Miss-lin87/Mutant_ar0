@@ -1,6 +1,11 @@
-package se.linda;
+package java.se.linda;
+
+import java.se.linda.enums.stats;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import static java.se.linda.enums.stats.*;
+
 
 public class Make_Stats {
     static ArrayList make_range_stats(boolean prim_stat){
@@ -15,12 +20,12 @@ public class Make_Stats {
             return Range_of_Stats;
         }
     }
-    static HashMap<String,Integer> make_stats_list(){
-        HashMap<String, Integer> stats_list = new HashMap<>();
-        stats_list.put("Styrka", 2);
-        stats_list.put("Kyla", 2);
-        stats_list.put("Skarpa", 2);
-        stats_list.put("Kansla", 2);
+    static HashMap<stats,Integer> make_stats_list(){
+        HashMap<stats, Integer> stats_list = new HashMap<>();
+        stats_list.put(STYRKA, 2);
+        stats_list.put(KYLA, 2);
+        stats_list.put(SKÄRPA, 2);
+        stats_list.put(KÄNSLA, 2);
         return stats_list;
     }
 }

@@ -1,1 +1,1 @@
-package se.linda;
+package java.se.linda.functions;
