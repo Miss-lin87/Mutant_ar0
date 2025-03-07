@@ -1,7 +1,7 @@
-package java.se.linda.player_classes.baseFunctions;
+package se.linda.Player_functions.baseFunctions;
 
+import se.linda.enums.klasser;
 
-import java.se.linda.enums.klasser;
 import java.util.ArrayList;
 import java.util.List;
 

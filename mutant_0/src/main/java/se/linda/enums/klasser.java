@@ -1,4 +1,4 @@
-package java.se.linda.enums;
+package se.linda.enums;
 
 public enum klasser {
     KROSSARE,

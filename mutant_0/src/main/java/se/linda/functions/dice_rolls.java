@@ -1,4 +1,4 @@
-package java.se.linda.functions;
+package se.linda.functions;
 
 public class dice_rolls {
 

@@ -1,12 +1,13 @@
-package java.se.linda.player_classes.baseFunctions;
+package se.linda.Player_functions.baseFunctions;
 
-import java.se.linda.enums.equipment;
-import java.se.linda.enums.klasser;
-import java.se.linda.functions.dice_rolls;
+import se.linda.enums.equipment;
+import se.linda.enums.klasser;
+import se.linda.functions.dice_rolls;
+
 import java.util.HashMap;
 import java.util.Map;
 
-import static java.se.linda.enums.equipment.*;
+import static se.linda.enums.equipment.*;
 
 
 public class Equipment {
