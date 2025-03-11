@@ -1,20 +1,29 @@
 package se.linda.Player_functions;
 
-import org.w3c.dom.Document;
-import se.linda.Player_functions.baseFunctions.Make_Stats;
+import se.linda.Player_functions.baseFunctions.Färdigheter;
 import se.linda.Player_functions.baseFunctions.playerKlass;
 import se.linda.enums.klasser;
-import se.linda.enums.stats;
-
-import java.util.HashMap;
 
 public class MakeChar {
-    private HashMap<stats, Integer> stats;
-    private playerKlass klass;
-    private Document doc;
+    private String name;
+    private playerKlass player;
+    private Färdigheter skills;
 
     public MakeChar(String name, klasser klass) {
-        this.stats = new HashMap<>();
-        this.klass = new playerKlass(name, klass);
+        this.name = name;
+        this.player = new playerKlass(klass);
+        this.skills = new Färdigheter(klass);
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public playerKlass getPlayer() {
+        return this.player;
+    }
+
+    public Färdigheter getSkills() {
+        return skills;
     }
 }

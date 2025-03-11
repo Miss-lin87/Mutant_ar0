@@ -1,38 +1,41 @@
 package se.linda.Player_functions.baseFunctions;
 
 import se.linda.enums.klasser;
+import se.linda.enums.talanger;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Talent {
-    private final List<String> talents;
+import static se.linda.enums.talanger.*;
 
-    private List<String> make_list(klasser klass){
+public class Talent {
+    private final List<talanger> talents;
+
+    private List<talanger> make_list(klasser klass){
         switch (klass){
             case KROSSARE -> {
-                return new ArrayList<>(List.of("Hård jävel", "Njurslag", "Övervåld"));
+                return new ArrayList<>(List.of(HÅRD_JÄVEL, NJURSLAG, ÖVERVÅLD));
             }
             case SKROTSKALLE -> {
-                return new ArrayList<>(List.of("Motorskalle", "Reparatör", "Uppfinnare"));
+                return new ArrayList<>(List.of(MOTORSKALLE, REPARATÖR, UPPFINNARE));
             }
             case ZONSTRYKARE -> {
-                return new ArrayList<>(List.of("Monsterjägare", "Rötnos", "Sakletare"));
+                return new ArrayList<>(List.of(MONSTERJÄGARE, RÖTNOS, SAKLETARE));
             }
             case FIXARE -> {
-                return new ArrayList<>(List.of("Elak jävel", "Storhandlare", "Hållhake"));
+                return new ArrayList<>(List.of(ELAK_JÄVEL, STORHANDLARE, HÅLLHAKE));
             }
             case MUTANT_MED_HUND -> {
-                return new ArrayList<>(List.of("Blodhund", "Kamphund", "Mutantens bästa vän"));
+                return new ArrayList<>(List.of(BLODHUND, KAMPHUND, MUTANTS_BÄSTA_VÄN));
             }
             case KRÖNIKÖR -> {
-                return new ArrayList<>(List.of("Artist", "Helare", "Våldshetsare"));
+                return new ArrayList<>(List.of(ARTIST, HELARE, VÅLDSHETSARE));
             }
             case BOSS -> {
-                return new ArrayList<>(List.of("Arkens beskyddare", "Kommendant", "Revolvermän"));
+                return new ArrayList<>(List.of(ARKENS_BESKYDDARE, KOMMENDANT, REVOLTERMÄN));
             }
             case SLAV -> {
-                return new ArrayList<>(List.of("Obrydd", "Slagtålig", "Rebell"));
+                return new ArrayList<>(List.of(OBRYDD, SLAGTÅLIG, REBELL));
             }
         }
         return null;
@@ -42,7 +45,20 @@ public class Talent {
         this.talents = make_list(klass);
     }
 
-    public List<String> getTalents(){
+    public List<talanger> getTalents(){
         return this.talents;
+    }
+
+    public String getDescription(talanger talang) {
+        return talang + " : " + talang.descrip;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        for (talanger talang : talents) {
+            result.append(talang).append(" : ").append(talang.descrip).append("\n");
+        }
+        return result.toString();
     }
 }

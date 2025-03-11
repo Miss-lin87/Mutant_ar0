@@ -5,43 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98c5fb6a-2966-4807-b6f5-9e9cd9bb44cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/MakeChar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/Basestats.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/StatsFunction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/playerKlass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/Färdigheter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/enums/färdigheter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/enums/specFärdigheter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/enums/talanger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mutant_0/src/main/tests/BasestatsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mutant_0/src/main/tests/dice_rollsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/Player_functions/MakeChar.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/Player_functions/baseFunctions/Basestats$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/Player_functions/baseFunctions/Basestats.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/Player_functions/baseFunctions/Equipment$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/Player_functions/baseFunctions/Equipment.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/Player_functions/baseFunctions/StatsFunction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/Player_functions/baseFunctions/Talent$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/Player_functions/baseFunctions/Talent.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/Player_functions/baseFunctions/playerKlass.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/production/Mutant_år_0/src/main/tests/BasestatsTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/production/Mutant_år_0/src/main/tests/dice_rollsTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Mutant_år_0.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Mutant_år_0.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mutant_0/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Make_Stats.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_classes/baseFunctions/Beststat.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_classes/baseFunctions/Equipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/Equipment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_classes/baseFunctions/Talent.java" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/Talent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_classes/baseFunctions/playerKlass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/MakeChar.java" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/MakeChar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/Basestats.java" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/Basestats.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/Equipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/Equipment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/StatsFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/StatsFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/Talent.java" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/Talent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/playerKlass.java" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/playerKlass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/enums/equipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/enums/equipment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/enums/klasser.java" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/enums/klasser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/enums/stats.java" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/enums/stats.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/functions/Mongodb.java" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/functions/Mongodb.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/functions/dice_rolls.java" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/functions/dice_rolls.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/Mutant_år_0/Mutant_år_0.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/Mutant_år_0/java/se/linda/Make_Stats.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/Mutant_år_0/java/se/linda/enums/equipment.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/Mutant_år_0/java/se/linda/enums/klasser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/Mutant_år_0/java/se/linda/enums/stats.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/Mutant_år_0/java/se/linda/functions/dice_rolls.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/Mutant_år_0/java/se/linda/player_classes/baseFunctions/Beststat$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/Mutant_år_0/java/se/linda/player_classes/baseFunctions/Beststat.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/Mutant_år_0/java/se/linda/player_classes/baseFunctions/Equipment$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/Mutant_år_0/java/se/linda/player_classes/baseFunctions/Equipment.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/Mutant_år_0/java/se/linda/player_classes/baseFunctions/Talent$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/Mutant_år_0/java/se/linda/player_classes/baseFunctions/Talent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/Mutant_år_0/java/se/linda/player_classes/baseFunctions/playerKlass.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/Mutant_år_0/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/Mutant_år_0/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/production/Mutant_år_0/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/production/Mutant_år_0/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/Mutant_år_0/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/Mutant_år_0/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/enums/equipment.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/enums/equipment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/functions/dice_rolls.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/functions/dice_rolls.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,8 +48,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
+        <option value="Record" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -60,21 +58,21 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$PROJECT_DIR$/../../../../Program Files/Java/jdk-22/lib/src.zip!/java.base/java/lang/NullPointerException.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/../../../../Program Files/Java/jdk-22/lib/src.zip!/java.base/java/lang/Object.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/../../../../Program Files/Java/jdk-22/lib/src.zip!/java.base/java/util/AbstractCollection.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/../../../../Program Files/Java/jdk-22/lib/src.zip!/java.base/java/util/AbstractList.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/../../../../Program Files/Java/jdk-22/lib/src.zip!/java.base/java/util/ArrayList.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/../../../../Program Files/Java/jdk-22/lib/src.zip!/java.base/java/util/Arrays.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/../../../../Program Files/Java/jdk-22/lib/src.zip!/java.base/java/util/ImmutableCollections.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Main.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/mutant_0/src/main/java/se/linda/functions/funcs.java" root0="SKIP_HIGHLIGHTING" />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
-      </MavenGeneralSettings>
-    </option>
   </component>
   <component name="MavenRunner">
     <option name="delegateBuildToMaven" value="true" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -85,27 +83,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/loric/Java projects/Mutant_år_0",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.runner",
-    "settings.editor.splitter.proportion": "0.3382157"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;JUnit.BasestatsTest.testGetStatalue.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BasestatsTest.testGetStats.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BasestatsTest.testSetters.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BasestatsTest.testSettersKrossare.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.dice_rollsTest.testD6.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.dice_rollsTest.testD66.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.dice_rollsTest.testD6overload.executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;fixing__stats&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/loric/Java projects/Mutant_år_0/mutant_0&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;,
+    &quot;settings.editor.splitter.proportion&quot;: &quot;0.3382157&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "JAVA"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;JAVA&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\loric\Java projects\Mutant_år_0\mutant_0" />
@@ -115,7 +125,7 @@
       <recent name="se.linda.Player_functions" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="se.linda.Main" />
       <module name="Mutant_år_0" />
@@ -129,6 +139,129 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <module name="Mutant_år_0" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BasestatsTest.testGetStats" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Mutant_år_0" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.main.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="src.main.tests" />
+      <option name="MAIN_CLASS_NAME" value="src.main.tests.BasestatsTest" />
+      <option name="METHOD_NAME" value="testGetStats" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BasestatsTest.testSetters" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Mutant_år_0" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.main.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="src.main.tests" />
+      <option name="MAIN_CLASS_NAME" value="src.main.tests.BasestatsTest" />
+      <option name="METHOD_NAME" value="testSetters" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BasestatsTest.testSettersKrossare" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Mutant_år_0" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.main.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="src.main.tests" />
+      <option name="MAIN_CLASS_NAME" value="src.main.tests.BasestatsTest" />
+      <option name="METHOD_NAME" value="testSettersKrossare" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dice_rollsTest.testD66" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Mutant_år_0" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.main.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="src.main.tests" />
+      <option name="MAIN_CLASS_NAME" value="src.main.tests.dice_rollsTest" />
+      <option name="METHOD_NAME" value="testD66" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dice_rollsTest.testD6overload" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Mutant_år_0" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.main.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="src.main.tests" />
+      <option name="MAIN_CLASS_NAME" value="src.main.tests.dice_rollsTest" />
+      <option name="METHOD_NAME" value="testD6overload" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list />
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/mutant_0" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.BasestatsTest.testSetters" />
+        <item itemvalue="JUnit.BasestatsTest.testSettersKrossare" />
+        <item itemvalue="JUnit.dice_rollsTest.testD6overload" />
+        <item itemvalue="JUnit.dice_rollsTest.testD66" />
+        <item itemvalue="JUnit.BasestatsTest.testGetStats" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -140,5 +273,64 @@
       <updated>1735739155533</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/playerKlass.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/playerKlass.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/Equipment.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/Equipment.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Main.java</url>
+          <line>8</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Main.java</url>
+          <line>9</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/Equipment.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/playerKlass.java</url>
+          <line>25</line>
+          <properties class="se.linda.Player_functions.baseFunctions.playerKlass" method="getEquipment">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/Equipment.java</url>
+          <line>31</line>
+          <properties class="se.linda.Player_functions.baseFunctions.Equipment" method="getEquipment">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -3,7 +3,13 @@ package se.linda.functions;
 public class dice_rolls {
 
     public int D6(){
-        return (int)(Math.random()*7);
+        int roll = (int)(Math.random()*7);
+        if (roll == 0) {
+            D6();
+        } else {
+            return roll;
+        }
+        return 1;
     }
 
     public String D66(){
