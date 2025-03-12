@@ -1,6 +1,8 @@
 package se.linda;
 
 import se.linda.Player_functions.MakeChar;
+import se.linda.Player_functions.baseFunctions.Färdigheter;
+import se.linda.enums.färdigheter;
 import se.linda.enums.klasser;
 import se.linda.enums.talanger;
 
@@ -13,6 +15,9 @@ public class Main {
         System.out.println(player.getPlayer().getBeststat().toString());
         System.out.println(player.getPlayer().getEquipment().getEquipment());
         System.out.println(player.getPlayer().getEquipment().toString());
+        System.out.println(player.getSkills().getSkills());
+        System.out.println(player.getSkills().toString());
+        player.getSkills().getSkills().replaceAll((färdigheter, number) -> number.intValue() +1);
         System.out.println(player.getSkills().getSkills());
     }
 }

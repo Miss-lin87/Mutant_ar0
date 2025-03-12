@@ -5,40 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98c5fb6a-2966-4807-b6f5-9e9cd9bb44cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/Färdigheter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/enums/färdigheter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/enums/specFärdigheter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/enums/talanger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mutant_0/src/main/tests/BasestatsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mutant_0/src/main/tests/dice_rollsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/Player_functions/MakeChar.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/Player_functions/baseFunctions/Basestats$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/Player_functions/baseFunctions/Basestats.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/Player_functions/baseFunctions/Equipment$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/Player_functions/baseFunctions/Equipment.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/Player_functions/baseFunctions/StatsFunction.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/Player_functions/baseFunctions/Talent$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/Player_functions/baseFunctions/Talent.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/Player_functions/baseFunctions/playerKlass.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/production/Mutant_år_0/src/main/tests/BasestatsTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/production/Mutant_år_0/src/main/tests/dice_rollsTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Mutant_år_0.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Mutant_år_0.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mutant_0/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/MakeChar.java" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/MakeChar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/Basestats.java" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/Basestats.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/Equipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/Equipment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/StatsFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/StatsFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/Talent.java" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/Talent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/playerKlass.java" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/playerKlass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/enums/equipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/enums/equipment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/functions/dice_rolls.java" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/functions/dice_rolls.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/Mutant_år_0/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/production/Mutant_år_0/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/enums/equipment.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/enums/equipment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/functions/dice_rolls.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/functions/dice_rolls.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/Färdigheter.java" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Player_functions/baseFunctions/Färdigheter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/enums/färdigheter.java" beforeDir="false" afterPath="$PROJECT_DIR$/mutant_0/src/main/java/se/linda/enums/färdigheter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/Player_functions/baseFunctions/Färdigheter.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/Mutant_år_0/se/linda/Player_functions/baseFunctions/Färdigheter.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,12 +270,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Main.java</url>
-          <line>8</line>
+          <line>10</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/mutant_0/src/main/java/se/linda/Main.java</url>
-          <line>9</line>
+          <line>11</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

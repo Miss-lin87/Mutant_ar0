@@ -4,13 +4,13 @@ import se.linda.enums.färdigheter;
 import se.linda.enums.klasser;
 import se.linda.enums.specFärdigheter;
 
-import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.Map;
 
 import static se.linda.enums.specFärdigheter.*;
 
 public class Färdigheter {
-    private final EnumMap<färdigheter, Integer> skills;
+    private HashMap<färdigheter, Integer> skills = new HashMap<>();
     private specFärdigheter specSkills;
 
     private void getSpecSkill(klasser klass) {
@@ -27,21 +27,26 @@ public class Färdigheter {
     }
 
     public Färdigheter(klasser klass) {
-        this.skills = new EnumMap<>(färdigheter.class);
-        getSpecSkill(klass);
-    }
-
-    public void setSkills() {
-        for (Map.Entry<färdigheter, Integer> skill : skills.entrySet()) {
-            skills.put(skill.getKey(), 0);
+        for (färdigheter F : färdigheter.values()) {
+            this.skills.put(F, 0);
         }
+        getSpecSkill(klass);
     }
 
     public specFärdigheter getSpecSkills() {
         return this.specSkills;
     }
 
-    public EnumMap<färdigheter, Integer> getSkills() {
+    public HashMap<färdigheter, Integer> getSkills() {
         return skills;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder temp = new StringBuilder();
+        for (Map.Entry<färdigheter, Integer> skill : skills.entrySet()) {
+            temp.append(skill.getKey()).append(" : ").append(skill.getValue()).append("\n");
+        }
+        return temp.toString();
     }
 }

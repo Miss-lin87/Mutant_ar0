@@ -14,8 +14,8 @@ public enum färdigheter {
     MANIPULERA("", 0),
     VÅRDA("", 0);
 
-    private String descrip;
-    private int value;
+    private final String descrip;
+    private final int value;
 
     färdigheter(String descrip, int value) {
         this.descrip = descrip;
