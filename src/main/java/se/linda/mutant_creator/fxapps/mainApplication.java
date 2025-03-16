@@ -3,6 +3,7 @@ package se.linda.mutant_creator.fxapps;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -16,7 +17,7 @@ public class mainApplication extends Application {
     private Button newChar = new Button("Make Character");
     private Button testInfor = new Button("Test");
     public static MakeChar player;
-    private Text test = new Text("");
+    public static Text character = new Text("");
 
     private void makeGrid(GridPane grid) {
         grid.setVgap(10);
@@ -26,11 +27,17 @@ public class mainApplication extends Application {
 
     private void buttonFuctions() {
         statsButton.setOnAction(actionEvent -> {
-            StatsApplication stats = new StatsApplication();
-            try {
-                stats.start(new Stage());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            if (player == null) {
+                Alert error = new Alert(Alert.AlertType.ERROR);
+                error.setContentText("Character cant be empty");
+                error.show();
+            } else {
+                StatsApplication stats = new StatsApplication();
+                try {
+                    stats.start(new Stage());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -49,9 +56,14 @@ public class mainApplication extends Application {
     }
 
     private void addButtons(GridPane grid) {
-        grid.add(statsButton,0,0);
-        grid.add(newChar,1,1);
-        grid.add(testInfor,1,2);
+        grid.add(statsButton,0,1);
+        grid.add(newChar,0,2);
+        grid.add(testInfor,0,3);
+    }
+
+    private void addText(GridPane grid) {
+        grid.add(new Text("Active Character: "),0,0);
+        grid.add(character, 1, 0);
     }
 
     @Override
@@ -60,6 +72,7 @@ public class mainApplication extends Application {
         makeGrid(grid);
         addButtons(grid);
         buttonFuctions();
+        addText(grid);
         Scene scene = new Scene(grid, 320, 240);
         stage.setTitle("Main");
         stage.setScene(scene);
