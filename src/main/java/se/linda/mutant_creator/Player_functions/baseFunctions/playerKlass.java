@@ -1,17 +1,19 @@
 package se.linda.mutant_creator.Player_functions.baseFunctions;
 
 import se.linda.mutant_creator.enums.klasser;
+import se.linda.mutant_creator.enums.talanger;
 
 public class playerKlass {
     private final klasser klass;
     private final Basestats basestats;
-    private final Talent talent;
+    private final Talent talents;
+    private talanger selectedTalent;
     private final Equipment equipment;
 
     public playerKlass(klasser klass){
         this.klass = klass;
         this.basestats = new Basestats(klass);
-        this.talent = new Talent(klass);
+        this.talents = new Talent(klass);
         this.equipment = new Equipment(klass);
     }
 
@@ -25,7 +27,15 @@ public class playerKlass {
     public Equipment getEquipment() {
         return this.equipment;
     }
-    public Talent getTalent() {
-        return this.talent;
+    public Talent getTalents() {
+        return this.talents;
+    }
+    public talanger getSelectedTalent() {
+        return this.selectedTalent;
+    }
+
+    //Setters
+    public void setSelectedTalent(talanger talang) {
+        this.selectedTalent = talang;
     }
 }

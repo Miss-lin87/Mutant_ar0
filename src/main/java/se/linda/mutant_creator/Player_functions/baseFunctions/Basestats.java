@@ -126,12 +126,7 @@ public class Basestats {
     }
 
     public int getTotal() {
-        int temp = 0;
-        temp += this.styrka;
-        temp += this.kyla;
-        temp += this.känsla;
-        temp += this.skärpa;
-        return temp;
+        return this.styrka + this.kyla + this.känsla + this.skärpa;
     }
 
     @Override

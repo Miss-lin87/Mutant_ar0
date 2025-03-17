@@ -52,12 +52,14 @@ public class mainApplication extends Application {
 
         testInfor.setOnAction(actionEvent -> {
             System.out.println(player.getName());
+            System.out.println(player.getPlayer().getKlass());
+            System.out.println(player.getPlayer().getSelectedTalent());
         });
     }
 
     private void addButtons(GridPane grid) {
-        grid.add(statsButton,0,1);
-        grid.add(newChar,0,2);
+        grid.add(newChar,0,1);
+        grid.add(statsButton,0,2);
         grid.add(testInfor,0,3);
     }
 
