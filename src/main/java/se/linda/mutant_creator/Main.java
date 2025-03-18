@@ -1,6 +1,5 @@
 package se.linda.mutant_creator;
-
-import javafx.application.Application;
+ 
 import se.linda.mutant_creator.fxapps.StatsApplication;
 
 public class Main {

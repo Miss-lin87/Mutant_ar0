@@ -25,7 +25,7 @@ public class charApplication extends Application {
     private Button submit = new Button("Submit");
     private Button info = new Button("?");
     private Button close = new Button("Cancel");
-    private gridMaker grid = new gridMaker(10,10);
+    private GridPane grid = new gridMaker(10,10).getGrid();
     private Alert warning = new Alert(Alert.AlertType.ERROR);
 
     public static void main(String[] args) {
@@ -139,8 +139,7 @@ public class charApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        GridPane mainGrid = grid.getGrid();
-        pupulateGrid(mainGrid);
-        setStage(stage, mainGrid,450,350,"New Character");
+        pupulateGrid(grid);
+        setStage(stage, grid,450,350,"New Character");
     }
 }
