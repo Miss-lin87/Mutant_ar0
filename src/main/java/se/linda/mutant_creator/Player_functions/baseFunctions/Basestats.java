@@ -1,6 +1,5 @@
 package se.linda.mutant_creator.Player_functions.baseFunctions;
 
-
 import se.linda.mutant_creator.enums.klasser;
 import se.linda.mutant_creator.enums.stats;
 

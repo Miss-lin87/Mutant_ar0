@@ -1,16 +1,13 @@
 package se.linda.mutant_creator.fxapps;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import se.linda.mutant_creator.enums.stats;
+import se.linda.mutant_creator.fxFunctions.gridMaker;
 
 import java.io.IOException;
 
@@ -22,13 +19,7 @@ public class StatsApplication extends Application {
     private int rawPoints = 6;
     private Text totalPoints = new Text("");
     private Button submit = new Button("Submit");
-
-    private void makeGrid(GridPane grid) {
-        grid.setAlignment(Pos.TOP_LEFT);
-        grid.setHgap(5);
-        grid.setVgap(5);
-        grid.setPadding(new Insets(25,25,25,25));
-    }
+    private GridPane mainGrid = new gridMaker(10,10).getGrid();
 
     private void uppdateText(stats stat) {
         switch (stat) {
@@ -95,17 +86,19 @@ public class StatsApplication extends Application {
         totalPoints.setText(String.valueOf(rawPoints));
     }
 
-    @Override
-    public void start(Stage stage) throws IOException {
-        GridPane grid = new GridPane();
-        makeGrid(grid);
+    private void setStage(Stage stage, GridPane grid, int V, int V1, String title) {
         baseGrid(grid);
         addText(grid);
         addButtons(grid);
-        Scene scene = new Scene(grid, 320, 240);
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
+        Scene mainScene = new Scene(grid,V,V1);
+        stage.setTitle(title);
+        stage.setScene(mainScene);
         stage.show();
+    }
+
+    @Override
+    public void start(Stage stage) throws IOException {
+        setStage(stage,mainGrid,340,275,"Stats");
     }
 
     public static void main() {
