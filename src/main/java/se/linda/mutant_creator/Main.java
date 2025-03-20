@@ -1,5 +1,5 @@
 package se.linda.mutant_creator;
- 
+
 import se.linda.mutant_creator.fxapps.StatsApplication;
 
 public class Main {
