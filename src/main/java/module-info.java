@@ -7,6 +7,10 @@ module se.linda.mutant_creator {
     requires org.kordamp.bootstrapfx.core;
     requires java.logging;
     requires java.desktop;
+    requires android.json;
+    requires json.smart;
+    requires org.mongodb.bson;
+    requires org.apache.pdfbox;
 
     opens se.linda.mutant_creator to javafx.fxml;
     exports se.linda.mutant_creator;

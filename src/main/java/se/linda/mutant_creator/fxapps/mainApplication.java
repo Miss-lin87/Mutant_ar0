@@ -1,7 +1,6 @@
 package se.linda.mutant_creator.fxapps;
 
 import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -9,6 +8,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import se.linda.mutant_creator.Player_functions.MakeChar;
+import se.linda.mutant_creator.fxFunctions.SaveChar;
 import se.linda.mutant_creator.fxFunctions.gridMaker;
 
 import java.io.IOException;
@@ -18,17 +18,10 @@ public class mainApplication extends Application {
     private Button newChar = new Button("Make Character");
     private Button testInfor = new Button("Test");
     private Button equipment = new Button("Equipment");
-    private GridPane mainGrid = new gridMaker(10,10).getGrid();
+    private Button save = new Button("Save");
+    private GridPane mainGrid = new gridMaker(10,10, false).getGrid();
     public static MakeChar player;
     public static Text character = new Text("");
-
-    private GridPane makeGrid() {
-        GridPane grid = new GridPane();
-        grid.setVgap(10);
-        grid.setHgap(10);
-        grid.setPadding(new Insets(25,25,25,25));
-        return grid;
-    }
 
     private void buttonFuctions() {
         statsButton.setOnAction(actionEvent -> {
@@ -73,6 +66,20 @@ public class mainApplication extends Application {
             System.out.println(player.getPlayer().getSelectedTalent());
             System.out.println(player.getPlayer().getEquipment().toString());
         });
+        save.setOnAction(ActionEvent -> {
+            if (player == null) {
+                Alert error = new Alert(Alert.AlertType.ERROR);
+                error.setContentText("Character cant be empty");
+                error.show();
+            } else {
+                try {
+                    SaveChar save = new SaveChar(player.getName(), player);
+                    save.save();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
     }
 
     private void addButtons(GridPane grid) {
@@ -80,6 +87,7 @@ public class mainApplication extends Application {
         grid.add(statsButton,0,2);
         grid.add(equipment,0,3);
         grid.add(testInfor,0,4);
+        grid.add(save,0,5);
     }
 
     private void addText(GridPane grid) {
@@ -106,7 +114,7 @@ public class mainApplication extends Application {
         setStage(stage, mainGrid, 340,275,"Main");
     }
 
-    public static void main(String[] args) {
-        launch(args);
+    public static void main() {
+        launch();
     }
 }

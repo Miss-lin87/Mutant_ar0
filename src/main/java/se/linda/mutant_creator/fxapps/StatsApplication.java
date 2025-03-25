@@ -19,14 +19,14 @@ public class StatsApplication extends Application {
     private int rawPoints = 6;
     private Text totalPoints = new Text("");
     private Button submit = new Button("Submit");
-    private GridPane mainGrid = new gridMaker(10,10).getGrid();
+    private GridPane mainGrid = new gridMaker(10, 10, false).getGrid();
 
     private void uppdateText(stats stat) {
         switch (stat) {
             case STYRKA -> Styrka.setText(String.valueOf(mainApplication.player.getPlayer().getBasestats().getStat(stat)));
             case KYLA -> Kyla.setText(String.valueOf(mainApplication.player.getPlayer().getBasestats().getStat(stat)));
-            case SKÄRPA -> Skärpa.setText((String.valueOf(mainApplication.player.getPlayer().getBasestats().getStat(stat))));
-            case KÄNSLA -> Känsla.setText(String.valueOf(mainApplication.player.getPlayer().getBasestats().getStat(stat)));
+            case SKARPA -> Skärpa.setText((String.valueOf(mainApplication.player.getPlayer().getBasestats().getStat(stat))));
+            case KANSLA -> Känsla.setText(String.valueOf(mainApplication.player.getPlayer().getBasestats().getStat(stat)));
         }
     }
 
@@ -35,8 +35,8 @@ public class StatsApplication extends Application {
         switch (stat) {
             case STYRKA -> temp = Styrka;
             case KYLA -> temp = Kyla;
-            case SKÄRPA -> temp = Skärpa;
-            case KÄNSLA -> temp = Känsla;
+            case SKARPA -> temp = Skärpa;
+            case KANSLA -> temp = Känsla;
         }
         return temp;
     }
@@ -45,20 +45,20 @@ public class StatsApplication extends Application {
         int placement = 1;
         for (stats stat : stats.values()) {
             Text disStat = new Text(stat.toString() + ": ");
-            grid.add(disStat,0,placement);
-            grid.add(converter(stat),1,placement);
+            grid.add(disStat, 0, placement);
+            grid.add(converter(stat), 1, placement);
             uppdateText(stat);
-            placement ++;
+            placement++;
         }
-        grid.add(submit,0,placement+1);
+        grid.add(submit, 0, placement + 1);
     }
 
     private void addButtons(GridPane grid) {
         int placement = 1;
         for (stats stat : stats.values()) {
-            grid.add(createButton(stat,"+",1),2,placement);
-            grid.add(createButton(stat,"-",-1), 3, placement);
-            placement ++;
+            grid.add(createButton(stat, "+", 1), 2, placement);
+            grid.add(createButton(stat, "-", -1), 3, placement);
+            placement++;
         }
     }
 
@@ -70,7 +70,7 @@ public class StatsApplication extends Application {
                 converter(stat).setText(String.valueOf(mainApplication.player.getPlayer().getBasestats().getStat(stat)));
                 rawPoints = 14 - mainApplication.player.getPlayer().getBasestats().getTotal();
                 totalPoints.setText(String.valueOf(rawPoints));
-        } else if (rawPoints > -1 && value < 0) {
+            } else if (rawPoints > -1 && value < 0) {
                 mainApplication.player.getPlayer().getBasestats().setStat(stat, value);
                 converter(stat).setText(String.valueOf(mainApplication.player.getPlayer().getBasestats().getStat(stat)));
                 rawPoints = 14 - mainApplication.player.getPlayer().getBasestats().getTotal();
@@ -80,9 +80,9 @@ public class StatsApplication extends Application {
         return temp;
     }
 
-    private void addText (GridPane grid) {
-        grid.add(new Text("Total points left: "),0,0);
-        grid.add(totalPoints,1,0);
+    private void addText(GridPane grid) {
+        grid.add(new Text("Total points left: "), 0, 0);
+        grid.add(totalPoints, 1, 0);
         totalPoints.setText(String.valueOf(rawPoints));
     }
 
@@ -90,7 +90,7 @@ public class StatsApplication extends Application {
         baseGrid(grid);
         addText(grid);
         addButtons(grid);
-        Scene mainScene = new Scene(grid,V,V1);
+        Scene mainScene = new Scene(grid, V, V1);
         stage.setTitle(title);
         stage.setScene(mainScene);
         stage.show();
@@ -98,10 +98,6 @@ public class StatsApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        setStage(stage,mainGrid,340,275,"Stats");
-    }
-
-    public static void main() {
-        launch();
+        setStage(stage, mainGrid, 340, 275, "Stats");
     }
 }

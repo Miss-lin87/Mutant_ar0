@@ -1,18 +1,18 @@
 package se.linda.mutant_creator.enums;
 
-public enum specFärdigheter {
+public enum specFardigheter {
     MUCKA (""),
     MECKA (""),
-    LEDA_VÄGEN (""),
+    LEDA_VAGEN(""),
     SCHACKRA (""),
-    BUSSA_PÅ (""),
+    BUSSA_PA(""),
     INSPIRERA (""),
     KOMMENDERA (""),
-    UTHÄRDA ("");
+    UTHARDA("");
 
     private String desprip;
 
-    specFärdigheter (String descrip) {
+    specFardigheter(String descrip) {
         this.desprip = descrip;
     }
 }

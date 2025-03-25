@@ -5,14 +5,12 @@ import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import se.linda.mutant_creator.enums.equipment;
 import se.linda.mutant_creator.fxFunctions.gridMaker;
 
-import javax.xml.transform.Templates;
 import java.io.IOException;
 
 public class equipmentApplication extends Application {
-    private gridMaker gridMaker = new gridMaker(10,10);
+    private gridMaker gridMaker = new gridMaker(10,10, false);
     private GridPane mainGrid = gridMaker.getGrid();
     private Text header = new Text("Equipment");
 

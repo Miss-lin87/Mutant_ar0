@@ -28,10 +28,10 @@ public class Basestats {
             case KYLA -> {
                 return this.kyla;
             }
-            case SKÄRPA -> {
+            case SKARPA -> {
                 return this.skärpa;
             }
-            case KÄNSLA -> {
+            case KANSLA -> {
                 return this.känsla;
             }
         }
@@ -51,9 +51,9 @@ public class Basestats {
     private void findStat(klasser klass){
         switch(klass) {
             case KROSSARE -> this.best_stat = STYRKA;
-            case SKROTSKALLE -> this.best_stat = SKÄRPA;
+            case SKROTSKALLE -> this.best_stat = SKARPA;
             case ZONSTRYKARE, SLAV, MUTANT_MED_HUND -> this.best_stat = KYLA;
-            case FIXARE, KRÖNIKÖR, BOSS -> this.best_stat = KÄNSLA;
+            case FIXARE, KRONIKOR, BOSS -> this.best_stat = KANSLA;
         }
     }
 
@@ -80,14 +80,14 @@ public class Basestats {
         if (value < 0) {
             this.känsla = Math.max(this.känsla - Math.abs(value), 2);
         } else {
-            this.känsla += checkRange(value, KÄNSLA)? value: 0;
+            this.känsla += checkRange(value, KANSLA)? value: 0;
         }
     }
     private void setSkärpa(int value) {
         if (value < 0) {
             this.skärpa = Math.max(this.skärpa - Math.abs(value), 2);
         } else {
-            this.skärpa += checkRange(value, SKÄRPA)? value: 0;
+            this.skärpa += checkRange(value, SKARPA)? value: 0;
         }
     }
 
@@ -95,8 +95,8 @@ public class Basestats {
         switch (stat) {
             case STYRKA -> setStyrka(value);
             case KYLA -> setKyla(value);
-            case KÄNSLA -> setKänsla(value);
-            case SKÄRPA -> setSkärpa(value);
+            case KANSLA -> setKänsla(value);
+            case SKARPA -> setSkärpa(value);
         }
     }
 
@@ -104,8 +104,8 @@ public class Basestats {
         int value = 0;
         switch (stat) {
             case STYRKA -> value = getStyrka();
-            case SKÄRPA -> value = getSkärpa();
-            case KÄNSLA -> value = getKänsla();
+            case SKARPA -> value = getSkärpa();
+            case KANSLA -> value = getKänsla();
             case KYLA -> value = getKyla();
         }
         return value;
@@ -131,8 +131,8 @@ public class Basestats {
     @Override
     public String toString() {
         return STYRKA.toString() + " : " + this.styrka + "\n" +
-                SKÄRPA.toString() + " : " + this.skärpa + "\n" +
-                KÄNSLA.toString() + " : " + this.känsla + "\n" +
+                SKARPA.toString() + " : " + this.skärpa + "\n" +
+                KANSLA.toString() + " : " + this.känsla + "\n" +
                 KYLA.toString() + " : " + this.kyla;
     }
 }

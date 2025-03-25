@@ -14,14 +14,14 @@ public class Talent {
     private List<talanger> makeList(klasser klass){
         List<talanger> temp = List.of();
         switch (klass){
-            case KROSSARE -> temp = List.of(HÅRD_JÄVEL, NJURSLAG, ÖVERVÅLD);
-            case SKROTSKALLE -> temp = List.of(MOTORSKALLE, REPARATÖR, UPPFINNARE);
-            case ZONSTRYKARE -> temp = List.of(MONSTERJÄGARE, RÖTNOS, SAKLETARE);
-            case FIXARE -> temp = List.of(ELAK_JÄVEL, STORHANDLARE, HÅLLHAKE);
-            case MUTANT_MED_HUND -> temp = List.of(BLODHUND, KAMPHUND, MUTANTS_BÄSTA_VÄN);
-            case KRÖNIKÖR -> temp = List.of(ARTIST, HELARE, VÅLDSHETSARE);
-            case BOSS -> temp = List.of(ARKENS_BESKYDDARE, KOMMENDANT, REVOLTERMÄN);
-            case SLAV -> temp = List.of(OBRYDD, SLAGTÅLIG, REBELL);
+            case KROSSARE -> temp = List.of(HARD_JAVEL, NJURSLAG, OVERVALD);
+            case SKROTSKALLE -> temp = List.of(MOTORSKALLE, REPARATOR, UPPFINNARE);
+            case ZONSTRYKARE -> temp = List.of(MONSTERJAGARE, ROTNOS, SAKLETARE);
+            case FIXARE -> temp = List.of(ELAK_JAVEL, STORHANDLARE, HALLHAKE);
+            case MUTANT_MED_HUND -> temp = List.of(BLODHUND, KAMPHUND, MUTANTS_BASTA_VAN);
+            case KRONIKOR -> temp = List.of(ARTIST, HELARE, VALDSHETSARE);
+            case BOSS -> temp = List.of(ARKENS_BESKYDDARE, KOMMENDANT, REVOLTERMAN);
+            case SLAV -> temp = List.of(OBRYDD, SLAGTALIG, REBELL);
         }
         return temp;
     }
