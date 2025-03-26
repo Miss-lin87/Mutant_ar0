@@ -1,6 +1,16 @@
 package se.linda.mutant_creator.functions;
 
+import java.util.Optional;
+
 public class dice_rolls {
+
+    public int D6(Optional<Integer> times) {
+        if (times.get() != 0 || times.get() > 0) {
+            return D6(times.get());
+        } else {
+            throw new IllegalArgumentException("Number of times must be greater than 0");
+        }
+    }
 
     public int D6() {
         int roll = (int)(Math.random()*7);
@@ -9,11 +19,7 @@ public class dice_rolls {
         } else {
             return roll;
         }
-        return 1;
-    }
-
-    public String D66(){
-        return D6() + "" + D6();
+        return roll;
     }
 
     public int D6(int times) {
@@ -23,4 +29,10 @@ public class dice_rolls {
         }
         return number;
     }
+
+    public String D66(){
+        return D6() + "" + D6();
+    }
+
+
 }
