@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 import se.linda.mutant_creator.fxFunctions.gridMaker;
 
 public class skillsApplication extends Application {
-    private GridPane grid = new gridMaker(10,10).getGrid();
+    private GridPane grid = new gridMaker(10,10, false).getGrid();
 
     private void populateGrid() {
         grid.addRow(0, new javafx.scene.text.Text("Skills"));
@@ -26,9 +26,5 @@ public class skillsApplication extends Application {
     public void start(Stage primaryStage) {
         populateGrid();
         setStage(primaryStage, grid, 340,275, "skills");
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }

@@ -6,7 +6,7 @@ public enum klasser {
     ZONSTRYKARE("Zonstrykare"),
     FIXARE("Fixare"),
     MUTANT_MED_HUND("Mutant med hund"),
-    KRÖNIKÖR("Krönikör"),
+    KRONIKOR("Krönikör"),
     BOSS("Boss"),
     SLAV("Slav");
 
