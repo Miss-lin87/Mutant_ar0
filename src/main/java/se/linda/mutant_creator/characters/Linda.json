@@ -1,1 +1,1 @@
-[{"Klass":"Krossare","Basestats":"STYRKA : 2\nSKÄRPA : 2\nKÄNSLA : 2\nKYLA : 2","Name":"Linda"}]
+[{"name":"Linda"},{"player":"se.linda.mutant_creator.Player_functions.baseFunctions.playerKlass@f962ebc"},{"klass":"KROSSARE"},{"skills":"{SKJUTA=0, SPEJA=0, MANIPULERA=0, KAMPA_PA=0, TA_KRAFTTAG=0, GENOMSKADA=0, SLASS=0, FORSTA_SIG_PÅ=0, SMYGA=0, FLY=0, KANNA_ZONEN=0, VARDA=0}"},{"specSkill":"MUCKA"},{"stats":"{SKARPA=2, KYLA=2, STYRKA=2, KANSLA=2}"},{"backpack":"{PATRONER=4, KRUBB=5, VATTEN=4}"}]

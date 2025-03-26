@@ -6,6 +6,9 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import se.linda.mutant_creator.Player_functions.MakeChar;
+import se.linda.mutant_creator.enums.klasser;
+import se.linda.mutant_creator.functions.funcs;
 import se.linda.mutant_creator.fxFunctions.gridMaker;
 import se.linda.mutant_creator.fxapps.mainApplication;
 import se.linda.mutant_creator.fxapps.savedChars;
@@ -19,17 +22,6 @@ public class Main extends Application {
     private Button charCreator = new Button("Character Creator");
     private Button savedChars = new Button("Saved Characters");
     private Text welcome = new Text("Welcome \n select an option");
-    private List<String> charNames = new ArrayList<>();
-
-    private void getCharacters() {
-        File folder = new File("src/main/java/se/linda/mutant_creator/characters");
-        File[] listOfFiles = folder.listFiles();
-        for (File file : listOfFiles) {
-            if (file.isFile()) {
-                charNames.add(file.getName().substring(0, file.getName().indexOf(".json")));
-            }
-        }
-    }
 
     private void buttonFunction(Stage stage) {
         charCreator.setOnAction(EventHander -> {
@@ -42,7 +34,6 @@ public class Main extends Application {
             }
         });
         savedChars.setOnAction(EventHandler -> {
-            getCharacters();
             savedChars saved = new savedChars();
             try {
                 saved.start(new Stage());
@@ -63,10 +54,6 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.setTitle("Mutant Character Creator");
         stage.show();
-    }
-
-    public List<String> getCharNames(){
-        return this.charNames;
     }
 
     @Override

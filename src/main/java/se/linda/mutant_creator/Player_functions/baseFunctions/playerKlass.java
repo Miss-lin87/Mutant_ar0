@@ -9,12 +9,14 @@ public class playerKlass {
     private final Talent talents;
     private talanger selectedTalent;
     private final Equipment equipment;
+    private final Fardigheter skills;
 
     public playerKlass(klasser klass){
         this.klass = klass;
         this.basestats = new Basestats(klass);
         this.talents = new Talent(klass);
         this.equipment = new Equipment(klass);
+        this.skills = new Fardigheter(klass);
     }
 
     //Getters
@@ -32,6 +34,9 @@ public class playerKlass {
     }
     public talanger getSelectedTalent() {
         return this.selectedTalent;
+    }
+    public Fardigheter getSkills() {
+        return this.skills;
     }
 
     //Setters

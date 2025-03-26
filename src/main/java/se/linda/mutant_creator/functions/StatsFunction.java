@@ -21,12 +21,4 @@ public class StatsFunction {
             return true;
         }
     }
-
-    public void changeStats(playerKlass player) {
-        int points = 6;
-        do {
-            System.out.println("You have " + points + " Points left");
-            printStats(player);
-        } while (points != 0);
-    }
 }

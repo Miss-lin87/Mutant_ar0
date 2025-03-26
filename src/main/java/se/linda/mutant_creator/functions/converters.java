@@ -8,7 +8,8 @@ public class converters {
             name = name.toUpperCase()
                     .replace("Å", "A")
                     .replace("Ä", "A")
-                    .replace("Ö", "O");
+                    .replace("Ö", "O")
+                    .replace(" ", "_");
             if (name.equals(value.toString())) {
                 temp = value;
             }

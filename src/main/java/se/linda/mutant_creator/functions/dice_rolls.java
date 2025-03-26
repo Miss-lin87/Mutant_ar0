@@ -1,37 +1,34 @@
 package se.linda.mutant_creator.functions;
 
 import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.Random;
 
 public class dice_rolls {
 
     public int D6(Optional<Integer> times) {
-        if (times.get() != 0 || times.get() > 0) {
+        if (times.isPresent() && times.get() > 0) {
             return D6(times.get());
         } else {
-            throw new IllegalArgumentException("Number of times must be greater than 0");
+            return D6(1);
         }
     }
 
-    public int D6() {
-        int roll = (int)(Math.random()*7);
-        if (roll == 0) {
-            D6();
+    private int D6(int times, int number) {
+        if (times == 0) {
+            return number;
         } else {
-            return roll;
+            number += new Random().nextInt(6)+1;
+            return D6(times-1, number);
         }
-        return roll;
     }
 
-    public int D6(int times) {
-        int number = 0;
-        for (int i = 0; i < times; i++) {
-            number += D6();
-        }
-        return number;
+    private int D6(int times) {
+        return D6(times, 0);
     }
 
     public String D66(){
-        return D6() + "" + D6();
+        return D6(1) + "" + D6(1);
     }
 
 

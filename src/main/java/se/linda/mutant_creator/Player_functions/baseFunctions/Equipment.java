@@ -3,24 +3,27 @@ package se.linda.mutant_creator.Player_functions.baseFunctions;
 import se.linda.mutant_creator.enums.equipment;
 import se.linda.mutant_creator.enums.klasser;
 import se.linda.mutant_creator.functions.dice_rolls;
+import se.linda.mutant_creator.functions.funcs;
 
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.Optional;
 
 import static se.linda.mutant_creator.enums.equipment.*;
 
 
 public class Equipment {
     private final dice_rolls D = new dice_rolls();
-    private EnumMap<equipment, Integer> backpack = new EnumMap<>(Map.of(PATRONER, D.D6(), KRUBB, D.D6(), VATTEN, D.D6()));
+    private final Optional<Integer> one = new funcs().getOptional(1);
+    private EnumMap<equipment, Integer> backpack = new EnumMap<>(Map.of(PATRONER, D.D6(one), KRUBB, D.D6(one), VATTEN, D.D6(one)));
 
     private void makeEqupiment(klasser klass) {
         switch (klass) {
-            case KROSSARE -> this.backpack.replace(KRUBB, backpack.get(KRUBB), D.D6(2));
-            case SKROTSKALLE, FIXARE -> this.backpack.replace(PATRONER, backpack.get(PATRONER), D.D6(2));
-            case ZONSTRYKARE -> this.backpack.put(VATTEN, +D.D6());
+            case KROSSARE -> this.backpack.replace(KRUBB, backpack.get(KRUBB), +D.D6(one));
+            case SKROTSKALLE, FIXARE -> this.backpack.replace(PATRONER, backpack.get(PATRONER), +D.D6(one));
+            case ZONSTRYKARE -> this.backpack.put(VATTEN, +D.D6(one));
             case MUTANT_MED_HUND, KRONIKOR -> this.backpack.put(PATRONER, +0);
-            case BOSS -> this.backpack.putAll(Map.of(PATRONER, +D.D6(), KRUBB, +D.D6()));
+            case BOSS -> this.backpack.putAll(Map.of(PATRONER, +D.D6(one), KRUBB, +D.D6(one)));
             case SLAV -> this.backpack.put(PATRONER, 0);
         }
     }

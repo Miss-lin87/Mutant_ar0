@@ -10,6 +10,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Field;
 
 public class SaveChar {
     private String name;
@@ -20,6 +21,14 @@ public class SaveChar {
         this.player = player;
         this.name = name;
         this.jsonArray = new JSONArray();
+    }
+
+    private void fillFile2(MakeChar player) throws JSONException {
+        for (Field F : player.getFields()) {
+            JSONObject tempData = new JSONObject();
+            tempData.put(F.getName(), player.getFieldValue(F).toString());
+            this.jsonArray.put(tempData);
+        }
     }
 
     private void fillFile(MakeChar player) throws JSONException {
@@ -36,7 +45,7 @@ public class SaveChar {
             if (temp.createNewFile()) {
                 FileWriter file = new FileWriter("src/main/java/se/linda/mutant_creator/characters/" + this.name + ".json");
                 BufferedWriter write = new BufferedWriter(file);
-                fillFile(this.player);
+                fillFile2(this.player);
                 write.write(jsonArray.toString());
                 write.close();
             } else {
