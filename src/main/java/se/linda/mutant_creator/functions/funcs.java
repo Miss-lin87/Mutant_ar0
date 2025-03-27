@@ -1,4 +1,5 @@
 package se.linda.mutant_creator.functions;
+import java.util.Optional;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -15,5 +16,9 @@ public class funcs {
         Scanner input_from_user = new Scanner(System.in);
         message.info("Please enter a number: ");
         return input_from_user.nextInt();
+    }
+
+    public <T> Optional<T> getOptional(T input) {
+        return Optional.ofNullable(input);
     }
 }

@@ -6,37 +6,66 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import org.w3c.dom.events.Event;
 import se.linda.mutant_creator.Main;
+import se.linda.mutant_creator.fxFunctions.SaveChar;
 import se.linda.mutant_creator.fxFunctions.gridMaker;
 
+import java.beans.EventHandler;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 public class savedChars extends Application {
     private GridPane mainGrid = new gridMaker(10,10, false).getGrid();
+    private int maxRowCount = 5;
     private Popup popup = new Popup();
-    private List<String> characters = new Main().getCharNames();
+    private List<String> charNames = new ArrayList<>();
+
+    private void getCharacters() {
+        File folder = new File("src/main/java/se/linda/mutant_creator/characters");
+        File[] listOfFiles = folder.listFiles();
+        assert listOfFiles != null;
+        for (File file : listOfFiles) {
+            if (file.isFile()) {
+                charNames.add(file.getName().substring(0, file.getName().indexOf(".json")));
+            }
+        }
+    }
 
     public static void main(String[] args) {
         launch(args);
     }
 
-    private void populateGrid() {
-        addButtons();
+    private void populateGrid(GridPane grid) {
+        addButtons(grid);
     }
 
-    private void addButtons() {
-        for (String character: characters) {
-            Button temp = new Button(character);
-            mainGrid.add(temp, mainGrid.getColumnCount(), mainGrid.getRowCount());
+    private void addButtons(GridPane grid) {
+        int rowcount = 0;
+        int columCount = 0;
+        for (String character: charNames) {
+            if (rowcount < maxRowCount) {
+                Button temp = new Button(character);
+                grid.add(temp, columCount, rowcount);
+                rowcount ++;
+            } else {
+                columCount ++;
+                rowcount = 0;
+                Button temp = new Button(character);
+                grid.add(temp, columCount, rowcount);
+            }
         }
     }
 
     private void buttonFunction(Button button, String character) {
-        //TODO
+        button.setOnAction(EventHandler -> {
+
+        });
     }
 
-    private void setStage(Stage stage){
-        Scene scene = new Scene(mainGrid, 300, 275);
+    private void setStage(GridPane grid, Stage stage) {
+        Scene scene = new Scene(grid, 300, 275);
         stage.setTitle("Saved Characters");
         stage.setScene(scene);
         stage.show();
@@ -44,7 +73,8 @@ public class savedChars extends Application {
 
     @Override
     public void start(Stage stage) {
-        populateGrid();
-        setStage(stage);
+        getCharacters();
+        populateGrid(mainGrid);
+        setStage(mainGrid, stage);
     }
 }

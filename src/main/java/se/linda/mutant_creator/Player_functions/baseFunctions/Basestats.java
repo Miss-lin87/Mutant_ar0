@@ -3,6 +3,8 @@ package se.linda.mutant_creator.Player_functions.baseFunctions;
 import se.linda.mutant_creator.enums.klasser;
 import se.linda.mutant_creator.enums.stats;
 
+import java.util.HashMap;
+
 import static se.linda.mutant_creator.enums.stats.*;
 
 public class Basestats {
@@ -109,6 +111,15 @@ public class Basestats {
             case KYLA -> value = getKyla();
         }
         return value;
+    }
+
+    public HashMap<stats, Integer> getAllStats(){
+        HashMap<stats, Integer> allStats = new HashMap<>();
+        allStats.put(STYRKA, this.styrka);
+        allStats.put(SKARPA, this.skärpa);
+        allStats.put(KANSLA, this.känsla);
+        allStats.put(KYLA, this.kyla);
+        return allStats;
     }
 
     public int getStyrka() {

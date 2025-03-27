@@ -9,7 +9,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import se.linda.mutant_creator.Player_functions.MakeChar;
-import se.linda.mutant_creator.Player_functions.baseFunctions.Färdigheter;
+import se.linda.mutant_creator.Player_functions.baseFunctions.Fardigheter;
 import se.linda.mutant_creator.Player_functions.baseFunctions.Talent;
 import se.linda.mutant_creator.enums.fardigheter;
 import se.linda.mutant_creator.enums.klasser;
@@ -23,20 +23,22 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class charApplication extends Application {
-    private TextField name = new TextField();
-    private Menu klasserMenu = new Menu("Klasser");
-    private Menu talentsMenu = new Menu("Talanger");
-    private Button submit = new Button("Submit");
-    private Button info = new Button("?");
-    private Button close = new Button("Cancel");
-    private GridPane grid = new gridMaker(10,10, false).getGrid();
-    private Alert warning = new Alert(Alert.AlertType.ERROR);
+    private final TextField name = new TextField();
+    private final Menu klasserMenu = new Menu("Klasser");
+    private final Menu talentsMenu = new Menu("Talanger");
+    private final Button stats = new Button("Set stats");
+    private final Button submit = new Button("Submit");
+    private final Button info = new Button("?");
+    private final Button close = new Button("Cancel");
+    private final GridPane grid = new gridMaker(10,10, false).getGrid();
+    private final Alert warning = new Alert(Alert.AlertType.ERROR);
     private int mainRowCount = 0;
     private int mainColumnCount = 0;
-    private HashMap<fardigheter, Integer> skillsMap = new HashMap<>();
+    private final HashMap<fardigheter, Integer> skillsMap = new HashMap<>();
     private int skillPoints = 10;
-    private Text pointsText = new Text(String.valueOf(skillPoints));
+    private final Text pointsText = new Text(String.valueOf(skillPoints));
     private int specSkillValue = 1;
+    private converters con = new converters();
 
     public static void main(String[] args) {
         launch(args);
@@ -63,7 +65,7 @@ public class charApplication extends Application {
     private VBox makeTalentMenu(GridPane mainGrid) {
         MenuBar mb = new MenuBar();
         talentsMenu.getItems().clear();
-        for (talanger talang : new Talent(new converters().stringTOEnum(klasserMenu.getText(), klasser.values())).getTalents()) {
+        for (talanger talang : new Talent(con.stringTOEnum(klasserMenu.getText(), klasser.values())).getTalents()) {
             MenuItem temp = new MenuItem(talang.getName());
             temp.setOnAction(EventHandler -> {
                 talentsMenu.setText(talang.getName());
@@ -89,8 +91,8 @@ public class charApplication extends Application {
                 warning.setContentText("Please select a talent");
                 warning.show();
             } else {
-                mainApplication.player = new MakeChar(name.getText(), new converters().stringTOEnum(klasserMenu.getText(), klasser.values()));
-                mainApplication.player.getPlayer().setSelectedTalent(new converters().stringTOEnum(talentsMenu.getText(), talanger.values()));
+                mainApplication.player = new MakeChar(name.getText(), con.stringTOEnum(klasserMenu.getText(), klasser.values()));
+                mainApplication.player.getPlayer().setSelectedTalent(con.stringTOEnum(talentsMenu.getText(), talanger.values()));
                 mainApplication.character.setText(mainApplication.player.getName());
                 stage.close();
             }
@@ -104,14 +106,22 @@ public class charApplication extends Application {
             if (Objects.equals(talentsMenu.getText(), "Talanger")) {
                 tip.setText("");
                 info.setTooltip(tip);
-            } else{
-                String temp = new Talent(new converters().stringTOEnum(klasserMenu.getText(), klasser.values())).getDescription(new converters().stringTOEnum(talentsMenu.getText(), talanger.values()));
+            } else {
+                String temp = new Talent(con.stringTOEnum(klasserMenu.getText(), klasser.values())).getDescription(con.stringTOEnum(talentsMenu.getText(), talanger.values()));
                 tip.setText(temp);
                 info.setTooltip(tip);
             }
         });
         close.setOnAction(EventHandler -> {
             stage.close();
+        });
+        stats.setOnAction(EventHandler -> {
+            StatsApplication statsApp = new StatsApplication();
+            try {
+                statsApp.start(stage);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
     }
 
@@ -132,11 +142,11 @@ public class charApplication extends Application {
     private void addSpecSkill(GridPane grid) {
         Text specTemp = new Text("1");
         int position = grid.getRowCount();
-        specTemp.setId(new Färdigheter(new converters().stringTOEnum(klasserMenu.getText(), klasser.values())).getSpecSkills().name());
-        grid.add(new Text(new Färdigheter(new converters().stringTOEnum(klasserMenu.getText(), klasser.values())).getSpecSkills().name()),mainColumnCount-1,position);
+        specTemp.setId(new Fardigheter(con.stringTOEnum(klasserMenu.getText(), klasser.values())).getSpecSkills().name());
+        grid.add(new Text(new Fardigheter(con.stringTOEnum(klasserMenu.getText(), klasser.values())).getSpecSkills().name()),mainColumnCount-1,position);
         grid.add(specTemp,mainColumnCount, position);
-        grid.add(makeSpecSkillButton("+", new Färdigheter(new converters().stringTOEnum(klasserMenu.getText(), klasser.values())).getSpecSkills(),1),mainColumnCount+1, position);
-        grid.add(makeSpecSkillButton("-", new Färdigheter(new converters().stringTOEnum(klasserMenu.getText(), klasser.values())).getSpecSkills(),-1),mainColumnCount+2, position);
+        grid.add(makeSpecSkillButton("+", new Fardigheter(con.stringTOEnum(klasserMenu.getText(), klasser.values())).getSpecSkills(),1),mainColumnCount+1, position);
+        grid.add(makeSpecSkillButton("-", new Fardigheter(con.stringTOEnum(klasserMenu.getText(), klasser.values())).getSpecSkills(),-1),mainColumnCount+2, position);
     }
 
     private void addSkills(GridPane grid) {
@@ -165,16 +175,12 @@ public class charApplication extends Application {
         Button temp = new Button(label);
         temp.setOnAction(EventHandler -> {
             int tempInt = Math.max(specSkillValue+value, 1);
-            if (specSkillValue < 4 && value > 0 || specSkillValue > 1 && value < 0) {
+            if (specSkillValue < 3 && value > 0 || specSkillValue > 1 && value < 0) {
                 specSkillValue = tempInt;
                 setSkillPointsValue();
                 ((Text) grid.getChildren().get(grid.getChildren().indexOf(Objects.requireNonNull(grid.lookup("#"+skill.name()))))).setText(String.valueOf(specSkillValue));
                 pointsText.setText(String.valueOf(skillPoints));
             }
-            //specSkillValue = Math.max(specSkillValue+value, 1);
-            //setSkillPointsValue();
-            //((Text) grid.getChildren().get(grid.getChildren().indexOf(Objects.requireNonNull(grid.lookup("#"+skill.name()))))).setText(String.valueOf(specSkillValue));
-            //pointsText.setText(String.valueOf(skillPoints));
         });
         return temp;
     }

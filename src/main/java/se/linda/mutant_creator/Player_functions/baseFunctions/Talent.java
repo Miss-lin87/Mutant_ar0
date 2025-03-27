@@ -35,14 +35,14 @@ public class Talent {
     }
 
     public String getDescription(talanger talang) {
-        return talang + ":\n" + talang.descrip;
+        return talang + ":\n" + talang.getDescrip();
     }
 
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
         for (talanger talang : talents) {
-            result.append(talang).append(" : ").append(talang.descrip).append("\n");
+            result.append(talang).append(" : ").append(talang.getDescrip()).append("\n");
         }
         return result.toString();
     }

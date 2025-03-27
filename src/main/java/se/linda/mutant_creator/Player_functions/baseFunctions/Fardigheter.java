@@ -10,7 +10,7 @@ import java.util.Map;
 import static se.linda.mutant_creator.enums.specFardigheter.*;
 
 
-public class Färdigheter {
+public class Fardigheter {
     private HashMap<fardigheter, Integer> skills = new HashMap<>();
     private specFardigheter specSkills;
 
@@ -27,7 +27,7 @@ public class Färdigheter {
         }
     }
 
-    public Färdigheter(klasser klass) {
+    public Fardigheter(klasser klass) {
         for (fardigheter F : fardigheter.values()) {
             this.skills.put(F, 0);
         }
