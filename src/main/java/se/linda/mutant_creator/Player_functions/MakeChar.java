@@ -27,6 +27,17 @@ public class MakeChar {
         this.backpack = player.getEquipment().getEquipment();
     }
 
+    private int setSkillBase(fardigheter fardighet) {
+         int returnValue = 0;
+        switch (fardighet) {
+            case KAMPA_PA, TA_KRAFTTAG, SLASS -> returnValue = player.getBasestats().getStyrka();
+            case SMYGA, FLY, SKJUTA -> returnValue = player.getBasestats().getKyla();
+            case SPEJA, FORSTA_SIG_PÅ, KANNA_ZONEN -> returnValue = player.getBasestats().getSkärpa();
+            case GENOMSKADA, MANIPULERA, VARDA -> returnValue = player.getBasestats().getKänsla();
+        }
+        return returnValue;
+    }
+
     //Getters
     public String getName() {
         return this.name;
@@ -34,10 +45,13 @@ public class MakeChar {
     public playerKlass getPlayer() {
         return this.player;
     }
-    public klasser getKlass(){
+    public klasser getKlass() {
         return this.klass;
     }
-    public HashMap<fardigheter, Integer> getSkills(){
+    public HashMap<fardigheter, Integer> getSkills() {
+        for (fardigheter fardighet : skills.keySet()) {
+            skills.put(fardighet, +setSkillBase(fardighet));
+        }
         return this.skills;
     }
     public specFardigheter getSpecSkill() {

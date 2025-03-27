@@ -26,6 +26,7 @@ public class charApplication extends Application {
     private final TextField name = new TextField();
     private final Menu klasserMenu = new Menu("Klasser");
     private final Menu talentsMenu = new Menu("Talanger");
+    private final Button stats = new Button("Set stats");
     private final Button submit = new Button("Submit");
     private final Button info = new Button("?");
     private final Button close = new Button("Cancel");
@@ -113,6 +114,14 @@ public class charApplication extends Application {
         });
         close.setOnAction(EventHandler -> {
             stage.close();
+        });
+        stats.setOnAction(EventHandler -> {
+            StatsApplication statsApp = new StatsApplication();
+            try {
+                statsApp.start(stage);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
     }
 
