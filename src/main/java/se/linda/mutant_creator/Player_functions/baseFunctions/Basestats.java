@@ -63,7 +63,7 @@ public class Basestats {
         return this.best_stat;
     }
 
-    //setters
+    //Setters
     private void setStyrka(int value) {
         if (value < 0) {
             this.styrka = Math.max(this.styrka - Math.abs(value), 2);
@@ -113,7 +113,7 @@ public class Basestats {
         return value;
     }
 
-    public HashMap<stats, Integer> getAllStats(){
+    public HashMap<stats, Integer> getAllStats() {
         HashMap<stats, Integer> allStats = new HashMap<>();
         allStats.put(STYRKA, this.styrka);
         allStats.put(SKARPA, this.skärpa);

@@ -9,7 +9,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import se.linda.mutant_creator.Player_functions.MakeChar;
 import se.linda.mutant_creator.fxFunctions.SaveChar;
-import se.linda.mutant_creator.fxFunctions.gridMaker;
+import se.linda.mutant_creator.fxFunctions.Grid;
 
 import java.io.IOException;
 
@@ -19,7 +19,8 @@ public class mainApplication extends Application {
     private Button testInfor = new Button("Test");
     private Button equipment = new Button("Equipment");
     private Button save = new Button("Save");
-    private GridPane mainGrid = new gridMaker(10,10, false).getGrid();
+    private Grid grid = new Grid();
+    private GridPane mainGrid = grid.getGrid(10,10, false);
     public static MakeChar player;
     public static Text character = new Text("");
 

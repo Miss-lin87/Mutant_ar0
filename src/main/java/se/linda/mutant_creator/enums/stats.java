@@ -1,14 +1,20 @@
 package se.linda.mutant_creator.enums;
 
 public enum stats {
-    STYRKA("Styrka"),
-    KYLA("Kyla"),
-    SKARPA("Skärpa"),
-    KANSLA("Känsla");
+    STYRKA("Styrka",2),
+    KYLA("Kyla",2),
+    SKARPA("Skärpa",2),
+    KANSLA("Känsla",2);
 
-    public final String stat;
+    public final String name;
+    public final int value;
 
-    stats (String stat) {
-        this.stat = stat;
+    stats (String stat, int value) {
+        this.name = stat;
+        this.value = value;
+    }
+
+    public int getValue() {
+        return this.value;
     }
 }

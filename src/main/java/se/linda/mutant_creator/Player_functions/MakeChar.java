@@ -28,7 +28,7 @@ public class MakeChar {
     }
 
     private int setSkillBase(fardigheter fardighet) {
-         int returnValue = 0;
+        int returnValue = 0;
         switch (fardighet) {
             case KAMPA_PA, TA_KRAFTTAG, SLASS -> returnValue = player.getBasestats().getStyrka();
             case SMYGA, FLY, SKJUTA -> returnValue = player.getBasestats().getKyla();

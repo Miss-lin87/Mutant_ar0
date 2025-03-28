@@ -7,7 +7,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import se.linda.mutant_creator.enums.stats;
-import se.linda.mutant_creator.fxFunctions.gridMaker;
+import se.linda.mutant_creator.fxFunctions.Grid;
 
 import java.io.IOException;
 
@@ -19,7 +19,8 @@ public class StatsApplication extends Application {
     private int rawPoints = 6;
     private Text totalPoints = new Text("");
     private Button submit = new Button("Submit");
-    private GridPane mainGrid = new gridMaker(10, 10, false).getGrid();
+    private Grid grid = new Grid();
+    private GridPane mainGrid = grid.getGrid(10, 10, false);
 
     private void uppdateText(stats stat) {
         switch (stat) {

@@ -11,9 +11,9 @@ import static se.linda.mutant_creator.enums.talanger.*;
 public class Talent {
     private final List<talanger> talents;
 
-    private List<talanger> makeList(klasser klass){
+    private List<talanger> makeList(klasser klass) {
         List<talanger> temp = List.of();
-        switch (klass){
+        switch (klass) {
             case KROSSARE -> temp = List.of(HARD_JAVEL, NJURSLAG, OVERVALD);
             case SKROTSKALLE -> temp = List.of(MOTORSKALLE, REPARATOR, UPPFINNARE);
             case ZONSTRYKARE -> temp = List.of(MONSTERJAGARE, ROTNOS, SAKLETARE);
@@ -30,7 +30,7 @@ public class Talent {
         this.talents = makeList(klass);
     }
 
-    public List<talanger> getTalents(){
+    public List<talanger> getTalents() {
         return this.talents;
     }
 

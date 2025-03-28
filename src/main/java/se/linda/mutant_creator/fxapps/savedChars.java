@@ -6,20 +6,16 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
-import org.w3c.dom.events.Event;
-import se.linda.mutant_creator.Main;
-import se.linda.mutant_creator.fxFunctions.SaveChar;
-import se.linda.mutant_creator.fxFunctions.gridMaker;
+import se.linda.mutant_creator.fxFunctions.Grid;
 
-import java.beans.EventHandler;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class savedChars extends Application {
-    private GridPane mainGrid = new gridMaker(10,10, false).getGrid();
+    private Grid grid = new Grid();
+    private GridPane mainGrid = grid.getGrid(10,10, false);
     private int maxRowCount = 5;
-    private Popup popup = new Popup();
     private List<String> charNames = new ArrayList<>();
 
     private void getCharacters() {
@@ -60,7 +56,6 @@ public class savedChars extends Application {
 
     private void buttonFunction(Button button, String character) {
         button.setOnAction(EventHandler -> {
-
         });
     }
 

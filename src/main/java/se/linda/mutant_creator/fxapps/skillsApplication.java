@@ -4,15 +4,16 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import se.linda.mutant_creator.fxFunctions.gridMaker;
+import se.linda.mutant_creator.fxFunctions.Grid;
 
 public class skillsApplication extends Application {
-    private GridPane grid = new gridMaker(10,10, false).getGrid();
+    private Grid grid = new Grid();
+    private GridPane mainGrid = grid.getGrid(10,10, false);
 
     private void populateGrid() {
-        grid.addRow(0, new javafx.scene.text.Text("Skills"));
-        grid.addColumn(0, new javafx.scene.text.Text("Test"));
-        grid.addColumn(1, new javafx.scene.text.Text("Test2"));
+        mainGrid.addRow(0, new javafx.scene.text.Text("Skills"));
+        mainGrid.addColumn(0, new javafx.scene.text.Text("Test"));
+        mainGrid.addColumn(1, new javafx.scene.text.Text("Test2"));
     }
 
     private void setStage(Stage stage, GridPane grid, int V, int V1, String title) {
@@ -25,6 +26,6 @@ public class skillsApplication extends Application {
     @Override
     public void start(Stage primaryStage) {
         populateGrid();
-        setStage(primaryStage, grid, 340,275, "skills");
+        setStage(primaryStage, mainGrid, 340,275, "skills");
     }
 }

@@ -6,19 +6,13 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import se.linda.mutant_creator.Player_functions.MakeChar;
-import se.linda.mutant_creator.enums.klasser;
-import se.linda.mutant_creator.functions.funcs;
-import se.linda.mutant_creator.fxFunctions.gridMaker;
+import se.linda.mutant_creator.fxFunctions.Grid;
 import se.linda.mutant_creator.fxapps.mainApplication;
 import se.linda.mutant_creator.fxapps.savedChars;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main extends Application {
-    private GridPane mainGrid = new gridMaker(10,10, false).getGrid();
+    private Grid grid = new Grid();
+    private GridPane mainGrid = grid.getGrid(10,10,false);
     private Button charCreator = new Button("Character Creator");
     private Button savedChars = new Button("Saved Characters");
     private Text welcome = new Text("Welcome \n select an option");

@@ -5,13 +5,13 @@ import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import se.linda.mutant_creator.fxFunctions.gridMaker;
+import se.linda.mutant_creator.fxFunctions.Grid;
 
 import java.io.IOException;
 
 public class equipmentApplication extends Application {
-    private gridMaker gridMaker = new gridMaker(10,10, false);
-    private GridPane mainGrid = gridMaker.getGrid();
+    private Grid grid = new Grid();
+    private GridPane mainGrid = grid.getGrid(10,10, false);
     private Text header = new Text("Equipment");
 
     public static void main(String[] args) {
