@@ -6,10 +6,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import se.linda.mutant_creator.Player_functions.MakeChar;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Field;
 
 public class SaveChar {
@@ -23,7 +20,7 @@ public class SaveChar {
         this.jsonArray = new JSONArray();
     }
 
-    private void fillFile2(MakeChar player) throws JSONException {
+    private void fillFile(MakeChar player) throws JSONException {
         for (Field F : player.getFields()) {
             JSONObject tempData = new JSONObject();
             tempData.put(F.getName(), player.getFieldValue(F).toString());
@@ -31,12 +28,16 @@ public class SaveChar {
         }
     }
 
-    private void fillFile(MakeChar player) throws JSONException {
-        JSONObject tempData = new JSONObject();
-        tempData.put("Name", player.getName());
-        tempData.put("Klass", player.getPlayer().getKlass().getName());
-        tempData.put("Basestats", player.getPlayer().getBasestats().toString());
-        this.jsonArray.put(tempData);
+    private boolean checkAvilability(String name) {
+        File folder = new File("src/main/java/se/linda/mutant_creator/characters");
+        File[] listOfFiles = folder.listFiles();
+        assert listOfFiles != null;
+        for (File file : listOfFiles) {
+            if (file.isFile()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void save() throws IOException {
@@ -45,18 +46,18 @@ public class SaveChar {
             if (temp.createNewFile()) {
                 FileWriter file = new FileWriter("src/main/java/se/linda/mutant_creator/characters/" + this.name + ".json");
                 BufferedWriter write = new BufferedWriter(file);
-                fillFile2(this.player);
+                fillFile(this.player);
                 write.write(jsonArray.toString());
                 write.close();
             } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
+                throw new IOException();
             }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new IOException(e);
         }
     }
 
-    public JSONArray getJArray() throws IOException {
+    public JSONArray getJArray() {
         return this.jsonArray;
     }
 }

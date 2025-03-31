@@ -1,39 +1,44 @@
 package se.linda.mutant_creator.Player_functions;
 
-import se.linda.mutant_creator.Player_functions.baseFunctions.playerKlass;
 import se.linda.mutant_creator.enums.*;
 
 import java.lang.reflect.Field;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static se.linda.mutant_creator.enums.stats.*;
+
 public class MakeChar {
     private String name;
-    private playerKlass player;
     private klasser klass;
     private HashMap<fardigheter, Integer>skills;
-    private specFardigheter specSkill;
-    private HashMap<stats, Integer> stats;
+    private EnumMap<stats, Integer> stats;
+    private HashMap<specFardigheter, Integer> specSkill;
     private Map<equipment, Integer> backpack;
 
-    public MakeChar(String name, klasser klass) {
+    public MakeChar(String name,
+                    klasser klass,
+                    HashMap<fardigheter, Integer> skillsMap,
+                    EnumMap<stats, Integer> statsMap,
+                    HashMap<specFardigheter, Integer> specMap,
+                    Map<equipment, Integer> backpack) {
         this.name = name;
-        this.player = new playerKlass(klass);
-        this.klass = player.getKlass();
-        this.skills = player.getSkills().getSkills();
-        this.specSkill = player.getSkills().getSpecSkills();
-        this.stats = player.getBasestats().getAllStats();
-        this.backpack = player.getEquipment().getEquipment();
+        this.klass = klass;
+        this.skills = skillsMap;
+        this.stats = statsMap;
+        this.specSkill = specMap;
+        this.backpack = backpack;
     }
 
     private int setSkillBase(fardigheter fardighet) {
-         int returnValue = 0;
+        int returnValue = 0;
         switch (fardighet) {
-            case KAMPA_PA, TA_KRAFTTAG, SLASS -> returnValue = player.getBasestats().getStyrka();
-            case SMYGA, FLY, SKJUTA -> returnValue = player.getBasestats().getKyla();
-            case SPEJA, FORSTA_SIG_PÅ, KANNA_ZONEN -> returnValue = player.getBasestats().getSkärpa();
-            case GENOMSKADA, MANIPULERA, VARDA -> returnValue = player.getBasestats().getKänsla();
+            case KAMPA_PA, TA_KRAFTTAG, SLASS -> returnValue = stats.get(STYRKA);
+            case SMYGA, FLY, SKJUTA -> returnValue = stats.get(KYLA);
+            case SPEJA, FORSTA_SIG_PÅ, KANNA_ZONEN -> returnValue = stats.get(SKARPA);
+            case GENOMSKADA, MANIPULERA, VARDA -> returnValue = stats.get(KANSLA);
         }
         return returnValue;
     }
@@ -41,9 +46,6 @@ public class MakeChar {
     //Getters
     public String getName() {
         return this.name;
-    }
-    public playerKlass getPlayer() {
-        return this.player;
     }
     public klasser getKlass() {
         return this.klass;
@@ -54,10 +56,7 @@ public class MakeChar {
         }
         return this.skills;
     }
-    public specFardigheter getSpecSkill() {
-        return specSkill;
-    }
-    public HashMap<stats, Integer> getStats() {
+    public EnumMap<stats, Integer> getStats() {
         return stats;
     }
     public Map<equipment, Integer> getBackpack() {
@@ -65,7 +64,6 @@ public class MakeChar {
     }
     public List<Field> getFields() {
         List<Field> fields = new java.util.ArrayList<>(List.of(this.getClass().getDeclaredFields()));
-        fields.remove(1);
         return fields;
     }
 
@@ -73,7 +71,7 @@ public class MakeChar {
         try {
             return (T) field.get(this);
         } catch (IllegalAccessException e) {
-            System.out.println(e.toString());
+            System.out.println(e);
         }
         return null;
     }

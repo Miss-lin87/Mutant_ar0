@@ -1,6 +1,6 @@
 package se.linda.mutant_creator.enums;
 
-public enum specFardigheter {
+public enum specFardigheter{
     MUCKA (""),
     MECKA (""),
     LEDA_VAGEN(""),
@@ -10,9 +10,9 @@ public enum specFardigheter {
     KOMMENDERA (""),
     UTHARDA("");
 
-    private String desprip;
+    private String descrip;
 
     specFardigheter(String descrip) {
-        this.desprip = descrip;
+        this.descrip = descrip;
     }
 }

@@ -3,16 +3,21 @@ package se.linda.mutant_creator.Player_functions.baseFunctions;
 import se.linda.mutant_creator.enums.fardigheter;
 import se.linda.mutant_creator.enums.klasser;
 import se.linda.mutant_creator.enums.specFardigheter;
-
 import java.util.HashMap;
 import java.util.Map;
 
 import static se.linda.mutant_creator.enums.specFardigheter.*;
 
-
 public class Fardigheter {
     private HashMap<fardigheter, Integer> skills = new HashMap<>();
     private specFardigheter specSkills;
+
+    public Fardigheter(klasser klass) {
+        for (fardigheter F : fardigheter.values()) {
+            this.skills.put(F, 0);
+        }
+        getSpecSkill(klass);
+    }
 
     private void getSpecSkill(klasser klass) {
         switch (klass) {
@@ -25,13 +30,6 @@ public class Fardigheter {
             case BOSS -> this.specSkills = KOMMENDERA;
             case SLAV -> this.specSkills = UTHARDA;
         }
-    }
-
-    public Fardigheter(klasser klass) {
-        for (fardigheter F : fardigheter.values()) {
-            this.skills.put(F, 0);
-        }
-        getSpecSkill(klass);
     }
 
     public specFardigheter getSpecSkills() {
