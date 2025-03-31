@@ -16,4 +16,6 @@ module se.linda.mutant_creator {
     exports se.linda.mutant_creator;
     exports se.linda.mutant_creator.fxapps;
     opens se.linda.mutant_creator.fxapps to javafx.fxml;
+    exports se.linda.mutant_creator.fxFunctions;
+    opens se.linda.mutant_creator.fxFunctions to javafx.fxml;
 }

@@ -8,7 +8,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import se.linda.mutant_creator.fxFunctions.Grid;
 import se.linda.mutant_creator.fxapps.mainApplication;
-import se.linda.mutant_creator.fxapps.savedChars;
+import se.linda.mutant_creator.fxFunctions.savedCharsController;
 
 public class Main extends Application {
     private Grid grid = new Grid();
@@ -28,7 +28,7 @@ public class Main extends Application {
             }
         });
         savedChars.setOnAction(EventHandler -> {
-            savedChars saved = new savedChars();
+            savedCharsController saved = new savedCharsController();
             try {
                 saved.start(new Stage());
             } catch (Exception e) {

@@ -1,10 +1,9 @@
 package se.linda.mutant_creator.functions;
 
 import java.util.Optional;
-import java.util.OptionalInt;
 import java.util.Random;
 
-public class dice_rolls {
+public class diceRolls {
 
     public int D6(Optional<Integer> times) {
         if (times.isPresent() && times.get() > 0) {

@@ -9,8 +9,8 @@ public enum stats {
     public final String name;
     public final int value;
 
-    stats (String stat, int value) {
-        this.name = stat;
+    stats (String name, int value) {
+        this.name = name;
         this.value = value;
     }
 

@@ -25,7 +25,7 @@ public class mainApplication extends Application {
     public static Text character = new Text("");
 
     private void buttonFuctions() {
-        statsButton.setOnAction(actionEvent -> {
+        /*statsButton.setOnAction(actionEvent -> {
             if (player == null) {
                 Alert error = new Alert(Alert.AlertType.ERROR);
                 error.setContentText("Character cant be empty");
@@ -38,9 +38,9 @@ public class mainApplication extends Application {
                     throw new RuntimeException(e);
                 }
             }
-        });
+        });*/
         newChar.setOnAction(actionEvent -> {
-            charApplication newplayer = new charApplication();
+            makeCharApplication newplayer = new makeCharApplication();
             try {
                 newplayer.start(new Stage());
             } catch (IOException g) {
@@ -61,12 +61,10 @@ public class mainApplication extends Application {
             }
         }
         });
-        testInfor.setOnAction(actionEvent -> {
+        /*testInfor.setOnAction(actionEvent -> {
             System.out.println(player.getName());
-            System.out.println(player.getPlayer().getKlass());
-            System.out.println(player.getPlayer().getSelectedTalent());
-            System.out.println(player.getPlayer().getEquipment().toString());
-        });
+            System.out.println(player.getKlass());
+        });*/
         save.setOnAction(ActionEvent -> {
             if (player == null) {
                 Alert error = new Alert(Alert.AlertType.ERROR);
@@ -77,32 +75,35 @@ public class mainApplication extends Application {
                     SaveChar save = new SaveChar(player.getName(), player);
                     save.save();
                 } catch (IOException e) {
-                    throw new RuntimeException(e);
+                    Alert error = new Alert(Alert.AlertType.INFORMATION);
+                    error.setContentText("Character already excists");
+                    error.show();
                 }
             }
         });
     }
 
-    private void addButtons(GridPane grid) {
-        grid.add(newChar,0,1);
-        grid.add(statsButton,0,2);
-        grid.add(equipment,0,3);
-        grid.add(testInfor,0,4);
-        grid.add(save,0,5);
+    private void addButtons() {
+        grid.addNodes(mainGrid,1,0,
+                newChar,
+                //statsButton,
+                equipment,
+                //testInfor,
+                save);
     }
 
-    private void addText(GridPane grid) {
-        grid.add(new Text("Active Character: "),0,0);
-        grid.add(character, 1, 0);
+    private void addText() {
+        mainGrid.add(new Text("Active Character: "),0,0);
+        mainGrid.add(character, 1, 0);
     }
 
-    private void populateGrid(GridPane grid) {
-        addText(grid);
-        addButtons(grid);
+    private void populateGrid() {
+        addText();
+        addButtons();
     }
 
     private void setStage(Stage stage, GridPane grid, int V, int V1, String title) {
-        populateGrid(grid);
+        populateGrid();
         buttonFuctions();
         Scene mainScene = new Scene(grid,V,V1);
         stage.setTitle(title);

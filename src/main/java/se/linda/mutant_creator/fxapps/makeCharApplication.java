@@ -5,10 +5,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import se.linda.mutant_creator.Player_functions.MakeChar;
+import se.linda.mutant_creator.Player_functions.baseFunctions.Basestats;
+import se.linda.mutant_creator.Player_functions.baseFunctions.Equipment;
 import se.linda.mutant_creator.Player_functions.baseFunctions.Talent;
 import se.linda.mutant_creator.Player_functions.baseFunctions.Fardigheter;
 import se.linda.mutant_creator.enums.*;
@@ -23,14 +27,16 @@ import java.util.Objects;
 
 import static se.linda.mutant_creator.enums.stats.*;
 
-public class charApplication extends Application {
+public class makeCharApplication extends Application {
     //Texts
     private Text Styrka = new Text(STYRKA.name);
     private Text Kyla = new Text(KYLA.name);
     private Text Skärpa = new Text(SKARPA.name);
     private Text Känsla = new Text(KANSLA.name);
     //Maps
-    private EnumMap<stats, Integer> statsMap = new EnumMap<>(Map.of(STYRKA, STYRKA.getValue(),
+    private String bestStat = "";
+    private EnumMap<stats, Integer> statsMap = new EnumMap<>(Map.of(
+            STYRKA, STYRKA.getValue(),
             KYLA, KYLA.getValue(),
             SKARPA, SKARPA.getValue(),
             KANSLA, KANSLA.getValue()));
@@ -48,11 +54,53 @@ public class charApplication extends Application {
     private int skillPoints = 10;
     private final Text statPointsText = new Text(String.valueOf(statPoints));
     private final Text skillPointsText = new Text(String.valueOf(skillPoints));
-    private int specSkillValue = 1;
+    private HashMap<specFardigheter, Integer> specSkill = new HashMap<>();
     private converters con = new converters();
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    private void setHighlight(boolean OnOff, Text... text) {
+        boolean highlight = OnOff;
+        Color highlightColor = OnOff ? Color.GREEN : Color.BLACK;
+        for (Text T : text) {
+            T.setUnderline(highlight);
+            T.setFill(highlightColor);
+        }
+    }
+
+    private void bestStatVisibility(stats stat) {
+        setHighlight(false, Styrka, Kyla, Skärpa, Känsla);
+        switch (stat) {
+            case STYRKA -> {
+                bestStat = STYRKA.name;
+                setHighlight(true, Styrka);
+            }
+            case KYLA -> {
+                bestStat = KYLA.name;
+                setHighlight(true, Kyla);
+            }
+            case SKARPA -> {
+                bestStat = SKARPA.name;
+                setHighlight(true, Skärpa);
+            }
+            case KANSLA -> {
+                bestStat = KANSLA.name;
+                setHighlight(true, Känsla);
+            }
+        }
+    }
+
+    private void lowerMaxStat() {
+        for (stats stat : statsMap.keySet()) {
+            if (statsMap.get(stat) == 5 && !con.getKlassList(stat).contains(klasserMenu.getText())) {
+                statsMap.put(stat, 4);
+                setStatPointValue();
+                ((Text) mainGrid.getChildren().get(mainGrid.getChildren().indexOf(Objects.requireNonNull(mainGrid.lookup("#"+stat.name()))))).setText("4");
+                statPointsText.setText(String.valueOf(statPoints));
+            }
+        }
     }
 
     private VBox makeKlassMenu() {
@@ -60,9 +108,20 @@ public class charApplication extends Application {
         for (klasser klass: klasser.values()) {
             MenuItem temp = new MenuItem(klass.getName());
             temp.setOnAction(EventHandler -> {
-                klasserMenu.setText(klass.getName());
-                if (talentsMenu.isDisable()){
-                    extendView(mainGrid);
+                if (Objects.equals(klasserMenu.getText(),"Klasser")) {
+                    bestStatVisibility(new Basestats(klass).getBeststat());
+                    klasserMenu.setText(klass.getName());
+                    addSpecSkill(mainGrid.getRowCount(), 4);
+                } else {
+                    klasser klazz = con.stringTOEnum(klasserMenu.getText(), klasser.values());
+                    bestStatVisibility(new Basestats(klass).getBeststat());
+                    removeSpecialSkill(con.findSpecSkill(klazz));
+                    klasserMenu.setText(klass.getName());
+                    addSpecSkill(mainGrid.getRowCount(), 4);
+                    lowerMaxStat();
+                }
+                if (talentsMenu.isDisable()) {
+                    extendView();
                 } else {
                     makeTalentMenu();
                 }
@@ -81,7 +140,7 @@ public class charApplication extends Application {
             temp.setOnAction(EventHandler -> {
                 talentsMenu.setText(talang.getName());
                 if (submit.isDisable()){
-                    extendView(mainGrid);
+                    extendView();
                 }
             });
             talentsMenu.getItems().add(temp);
@@ -102,8 +161,12 @@ public class charApplication extends Application {
                 warning.setContentText("Please select a talent");
                 warning.show();
             } else {
-                mainApplication.player = new MakeChar(name.getText(), con.stringTOEnum(klasserMenu.getText(), klasser.values()));
-                mainApplication.player.getPlayer().setSelectedTalent(con.stringTOEnum(talentsMenu.getText(), talanger.values()));
+                mainApplication.player = new MakeChar(name.getText(),
+                        con.stringTOEnum(klasserMenu.getText(), klasser.values()),
+                        skillsMap,
+                        statsMap,
+                        specSkill,
+                        new Equipment(con.stringTOEnum(klasserMenu.getText(), klasser.values())).getEquipment());
                 mainApplication.character.setText(mainApplication.player.getName());
                 stage.close();
             }
@@ -116,7 +179,7 @@ public class charApplication extends Application {
             tip.setShowDelay(Duration.ZERO);
             if (Objects.equals(talentsMenu.getText(), "Talanger")) {
                 tip.setText("");
-                info.Tooltip(tip);
+                info.setTooltip(tip);
             } else {
                 String temp = new Talent(con.stringTOEnum(klasserMenu.getText(), klasser.values())).getDescription(con.stringTOEnum(talentsMenu.getText(), talanger.values()));
                 tip.setText(temp);
@@ -128,27 +191,40 @@ public class charApplication extends Application {
         });
     }
 
-
     private void extendView() {
         if (talentsMenu.isDisable()) {
             mainGrid.add(new Text("Select Talent: "),0,7);
             talentsMenu.setDisable(false);
             mainGrid.add(makeTalentMenu(),1, 7);
             mainGrid.add(info, 2, 7);
-            addSpecSkill(mainGrid.getRowCount(), 5);
         } else if (submit.isDisable() && !talentsMenu.isDisable()) {
             submit.setDisable(false);
             mainGrid.add(submit,1, 9);
         }
     }
 
+    private void removeSpecialSkill(specFardigheter specskill) {
+        int index = mainGrid.getChildren().indexOf(mainGrid.lookup("#" + specskill.toString()));
+        mainGrid.getChildren().remove(index+2);
+        mainGrid.getChildren().remove(index+1);
+        mainGrid.getChildren().remove(index);
+        mainGrid.getChildren().remove(index-1);
+        specSkill.remove(specskill);
+        //setSkillPointsValue();
+        skillPointsText.setText(String.valueOf(skillPoints));
+    }
+
     private void addSpecSkill(int row, int column) {
         Text specTemp = new Text("1");
-        specTemp.setId(new Fardigheter(con.stringTOEnum(klasserMenu.getText(), klasser.values())).getSpecSkills().name());
-        mainGrid.add(new Text(new Fardigheter(con.stringTOEnum(klasserMenu.getText(), klasser.values())).getSpecSkills().name()),column,row);
+        specFardigheter specSkillName = con.findSpecSkill(con.stringTOEnum(klasserMenu.getText(), klasser.values()));
+        specTemp.setId(specSkillName.toString());
+        mainGrid.add(new Text(specSkillName.toString()),column,row);
         mainGrid.add(specTemp,column+1, row);
-        mainGrid.add(makeSpecSkillButton("+", new Fardigheter(con.stringTOEnum(klasserMenu.getText(), klasser.values())).getSpecSkills(),1),column+2, row);
-        mainGrid.add(makeSpecSkillButton("-", new Fardigheter(con.stringTOEnum(klasserMenu.getText(), klasser.values())).getSpecSkills(),-1),column+3, row);
+        mainGrid.add(makeSpecSkillButton("+", specSkillName,1),column+2, row);
+        mainGrid.add(makeSpecSkillButton("-", specSkillName,-1),column+3, row);
+        specSkill.put(specSkillName, 1);
+        setSkillPointsValue();
+        skillPointsText.setText(String.valueOf(skillPoints));
     }
 
     private void addSkills(int row, int column) {
@@ -158,7 +234,7 @@ public class charApplication extends Application {
             Text tempValue = new Text("0");
             tempValue.setId(skill.name());
             mainGrid.add(new Text(skill.name()), column, row);
-            mainGrid.add(tempValue,column+1,row);
+            mainGrid.add(tempValue,column+1, row);
             skillsMap.put(skill, 0);
         }
     }
@@ -175,11 +251,11 @@ public class charApplication extends Application {
     private Button makeSpecSkillButton(String label, specFardigheter skill, int value) {
         Button temp = new Button(label);
         temp.setOnAction(EventHandler -> {
-            int tempInt = Math.max(specSkillValue+value, 1);
-            if (specSkillValue < 3 && value > 0 || specSkillValue > 1 && value < 0) {
-                specSkillValue = tempInt;
+            int tempInt = Math.max(specSkill.get(skill)+value, 1);
+            if (skillPoints > 0 && tempInt < 4 || value < 0 && tempInt < 4 && skillPoints > -1) {
+                specSkill.put(skill, tempInt);
                 setSkillPointsValue();
-                ((Text) mainGrid.getChildren().get(mainGrid.getChildren().indexOf(Objects.requireNonNull(mainGrid.lookup("#"+skill.name()))))).setText(String.valueOf(specSkillValue));
+                ((Text) mainGrid.getChildren().get(mainGrid.getChildren().indexOf(Objects.requireNonNull(mainGrid.lookup("#"+skill.toString()))))).setText(String.valueOf(tempInt));
                 skillPointsText.setText(String.valueOf(skillPoints));
             }
         });
@@ -203,8 +279,9 @@ public class charApplication extends Application {
     private Button makeStatsButton(String Label, stats stat, int value) {
         Button temp = new Button(Label);
         temp.setOnAction(EventHandler -> {
+            int maxStat = stat.name.equals(bestStat) ? 6 : 5;
             int tempInt = Math.max(statsMap.get(stat)+value, 2);
-            if (statPoints > 0 && tempInt < 5 || value < 0 && tempInt < 5 && statPoints > -1) {
+            if (statPoints > 0 && tempInt < maxStat || value < 0 && tempInt < maxStat && statPoints > -1) {
                 statsMap.put(stat, tempInt);
                 setStatPointValue();
                 ((Text) mainGrid.getChildren().get(mainGrid.getChildren().indexOf(Objects.requireNonNull(mainGrid.lookup("#"+stat.name()))))).setText(String.valueOf(tempInt));
@@ -215,7 +292,7 @@ public class charApplication extends Application {
     }
 
     private void setStatPointValue() {
-        int temp = 6;
+        int temp = 14;
         for (int value : statsMap.values()) {
             temp -= value;
         }
@@ -227,7 +304,7 @@ public class charApplication extends Application {
         for (int value : skillsMap.values()) {
             temp -= value;
         }
-        temp -= specSkillValue;
+        temp -= Math.max(specSkill.get(con.findSpecSkill(con.stringTOEnum(klasserMenu.getText(), klasser.values()))),0);
         skillPoints = temp;
     }
 
@@ -237,6 +314,7 @@ public class charApplication extends Application {
     }
 
     private void popColumThree() {
+        grid.addNode(mainGrid, 0,2, statPointsText);
         grid.addNodes(mainGrid,2,3,
                 makeStatsButton("-", STYRKA, -1),
                 makeStatsButton("-", KYLA, -1),
@@ -247,7 +325,7 @@ public class charApplication extends Application {
 
     private void popColumTwo() {
         grid.addNodes(mainGrid,2,2,
-                makeStatsButton("+",STYRKA,1),
+                makeStatsButton("+", STYRKA,1),
                 makeStatsButton("+", KYLA, 1),
                 makeStatsButton("+", SKARPA, 1),
                 makeStatsButton("+", KANSLA, 1)
@@ -266,7 +344,7 @@ public class charApplication extends Application {
         Text skarValue = makeStatText(SKARPA);
         Text kanValue = makeStatText(KANSLA);
         grid.addNodes(mainGrid,0,1,
-                new Text("New Character"),
+                new Text("Stat Points Remaining: "),
                 name,
                 strValue, kylaValue, skarValue, kanValue,
                 makeKlassMenu());
@@ -305,6 +383,6 @@ public class charApplication extends Application {
     public void start(Stage stage) throws IOException {
         setVisibility();
         pupulateGrid();
-        setStage(stage, mainGrid,650,525,"New Character");
+        setStage(stage, mainGrid,525,450,"New Character");
     }
 }

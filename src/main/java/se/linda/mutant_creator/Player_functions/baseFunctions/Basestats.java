@@ -4,6 +4,7 @@ import se.linda.mutant_creator.enums.klasser;
 import se.linda.mutant_creator.enums.stats;
 
 import java.util.HashMap;
+import java.util.List;
 
 import static se.linda.mutant_creator.enums.stats.*;
 

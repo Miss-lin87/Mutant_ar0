@@ -20,7 +20,7 @@ public class equipmentApplication extends Application {
 
     private void populateGrid(GridPane mainGrid) {
         mainGrid.add(header, 0, 0);
-        mainGrid.add(new Text(mainApplication.player.getPlayer().getEquipment().toString()), 0, 1);
+        mainGrid.add(new Text(mainApplication.player.getBackpack().toString()), 0, 1);
     }
 
     private void setStage(Stage stage, GridPane grid, int V, int V1, String title) {

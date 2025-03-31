@@ -6,7 +6,6 @@ import javafx.scene.layout.GridPane;
 
 public class Grid {
     private GridPane grid;
-    private boolean visbility;
 
     public Grid(){
         this.grid = new GridPane();
@@ -26,10 +25,10 @@ public class Grid {
     }
 
     public GridPane addNodes(GridPane grid, int row, int colum, Node... nodes) {
-        int rowcount = 0;
+        int startRow = 0;
         for (Node N : nodes) {
-            grid.add(N, colum, row + rowcount);
-            rowcount ++;
+            grid.add(N, colum, row + startRow);
+            startRow ++;
         }
         return grid;
     }
