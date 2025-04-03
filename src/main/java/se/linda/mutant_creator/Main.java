@@ -38,9 +38,10 @@ public class Main extends Application {
     }
 
     private void populateGrid() {
-        mainGrid.add(welcome, 0, 0);
-        mainGrid.add(charCreator, 0, 1);
-        mainGrid.add(savedChars, 0, 2);
+        grid.addNodes(mainGrid,0,0,
+                welcome,
+                charCreator,
+                savedChars);
     }
 
     private void setStage(Stage stage) {

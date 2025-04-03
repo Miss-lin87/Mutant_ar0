@@ -3,7 +3,6 @@ package se.linda.mutant_creator.Player_functions.baseFunctions;
 
 import se.linda.mutant_creator.enums.klasser;
 import se.linda.mutant_creator.enums.talanger;
-
 import java.util.List;
 
 import static se.linda.mutant_creator.enums.talanger.*;
@@ -12,7 +11,7 @@ public class Talent {
     private final List<talanger> talents;
 
     private List<talanger> makeList(klasser klass) {
-        List<talanger> temp = List.of();
+        List<talanger> temp = null;
         switch (klass) {
             case KROSSARE -> temp = List.of(HARD_JAVEL, NJURSLAG, OVERVALD);
             case SKROTSKALLE -> temp = List.of(MOTORSKALLE, REPARATOR, UPPFINNARE);

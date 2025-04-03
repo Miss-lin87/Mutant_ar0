@@ -10,7 +10,6 @@ import java.util.List;
 import static se.linda.mutant_creator.enums.klasser.*;
 import static se.linda.mutant_creator.enums.specFardigheter.*;
 import static se.linda.mutant_creator.enums.specFardigheter.UTHARDA;
-import static se.linda.mutant_creator.enums.stats.STYRKA;
 
 public class converters {
 

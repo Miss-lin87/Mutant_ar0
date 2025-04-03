@@ -1,12 +1,15 @@
 package se.linda.mutant_creator.fxapps;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -14,48 +17,47 @@ import se.linda.mutant_creator.Player_functions.MakeChar;
 import se.linda.mutant_creator.Player_functions.baseFunctions.Basestats;
 import se.linda.mutant_creator.Player_functions.baseFunctions.Equipment;
 import se.linda.mutant_creator.Player_functions.baseFunctions.Talent;
-import se.linda.mutant_creator.Player_functions.baseFunctions.Fardigheter;
 import se.linda.mutant_creator.enums.*;
 import se.linda.mutant_creator.functions.converters;
+import se.linda.mutant_creator.functions.funcs;
 import se.linda.mutant_creator.fxFunctions.Grid;
 
 import java.io.IOException;
-import java.util.EnumMap;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 import static se.linda.mutant_creator.enums.stats.*;
 
 public class makeCharApplication extends Application {
+    private final Grid grid = new Grid();
+    private final GridPane mainGrid = grid.getGrid(5,5, true);
+    private int statPoints = 6;
+    private int skillPoints = 10;
     //Texts
-    private Text Styrka = new Text(STYRKA.name);
-    private Text Kyla = new Text(KYLA.name);
-    private Text Skärpa = new Text(SKARPA.name);
-    private Text Känsla = new Text(KANSLA.name);
+    private Text Styrka = new Text(STYRKA.getName());
+    private Text Kyla = new Text(KYLA.getName());
+    private Text Skärpa = new Text(SKARPA.getName());
+    private Text Känsla = new Text(KANSLA.getName());
+    private final Text statPointsText = new Text(String.valueOf(statPoints));
+    private final Text skillPointsText = new Text(String.valueOf(skillPoints));
     //Maps
-    private String bestStat = "";
     private EnumMap<stats, Integer> statsMap = new EnumMap<>(Map.of(
             STYRKA, STYRKA.getValue(),
             KYLA, KYLA.getValue(),
             SKARPA, SKARPA.getValue(),
             KANSLA, KANSLA.getValue()));
     private final HashMap<fardigheter, Integer> skillsMap = new HashMap<>();
+    private HashMap<specFardigheter, Integer> specSkill = new HashMap<>();
+    private String bestStat = "";
     private final TextField name = new TextField();
     private final Menu klasserMenu = new Menu("Klasser");
     private final Menu talentsMenu = new Menu("Talanger");
     private final Button submit = new Button("Submit");
     private final Button info = new Button("?");
     private final Button close = new Button("Cancel");
-    private final Grid grid = new Grid();
-    private final GridPane mainGrid = grid.getGrid(5,5, true);
     private final Alert warning = new Alert(Alert.AlertType.ERROR);
-    private int statPoints = 6;
-    private int skillPoints = 10;
-    private final Text statPointsText = new Text(String.valueOf(statPoints));
-    private final Text skillPointsText = new Text(String.valueOf(skillPoints));
-    private HashMap<specFardigheter, Integer> specSkill = new HashMap<>();
     private converters con = new converters();
+    private boolean nameTaken = false;
+
 
     public static void main(String[] args) {
         launch(args);
@@ -189,6 +191,17 @@ public class makeCharApplication extends Application {
         close.setOnAction(EventHandler -> {
             stage.close();
         });
+        name.setOnKeyReleased(KeyEvent -> {
+            String tempName = name.getText();
+            List<String> names = new funcs().getCharNames();
+            if (names.contains(tempName)) {
+                nameTaken = true;
+                name.setStyle("-fx-text-fill: red;");
+            } else {
+                nameTaken = false;
+                name.setStyle("-fx-text-fill: black;");
+            }
+        });
     }
 
     private void extendView() {
@@ -210,7 +223,6 @@ public class makeCharApplication extends Application {
         mainGrid.getChildren().remove(index);
         mainGrid.getChildren().remove(index-1);
         specSkill.remove(specskill);
-        //setSkillPointsValue();
         skillPointsText.setText(String.valueOf(skillPoints));
     }
 

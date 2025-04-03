@@ -14,6 +14,7 @@ import se.linda.mutant_creator.fxapps.savedCharApp;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class savedCharsController extends Application {
@@ -35,6 +36,11 @@ public class savedCharsController extends Application {
                 charNames.add(file.getName().substring(0, file.getName().indexOf(".json")));
             }
         }
+    }
+
+    public List<String> getCharNames() {
+        getCharacters();
+        return charNames;
     }
 
     public static void main(String[] args) {
@@ -66,16 +72,18 @@ public class savedCharsController extends Application {
 
     private void buttonFunction(Button button, String character) {
         button.setOnAction(EventHandler -> {
-            FXMLLoader hello = new FXMLLoader(savedCharsController.class.getResource("src/main/resources/se/linda/mutant_creator/Character.fxml"));
-            Scene scene = null;
+            FXMLLoader hello = new FXMLLoader(savedCharsController.class.getResource("Users/loric/Java projects/Mutant_Creator/src/main/resources/se/linda/mutant_creator/Character.fxml"));
+            FXMLLoader test = new FXMLLoader(savedCharsController.class.getResource("Character.fxml"));
+            Scene scene;
+            palyerName.setText("Linda");
             try {
-                scene = new Scene(hello.load(), 320,240);
+                scene = new Scene(test.load(), 320,240);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.show();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
         });
     }
 

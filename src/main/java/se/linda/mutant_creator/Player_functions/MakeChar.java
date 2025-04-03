@@ -3,10 +3,7 @@ package se.linda.mutant_creator.Player_functions;
 import se.linda.mutant_creator.enums.*;
 
 import java.lang.reflect.Field;
-import java.util.EnumMap;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static se.linda.mutant_creator.enums.stats.*;
 
@@ -63,16 +60,14 @@ public class MakeChar {
         return backpack;
     }
     public List<Field> getFields() {
-        List<Field> fields = new java.util.ArrayList<>(List.of(this.getClass().getDeclaredFields()));
-        return fields;
+        return new ArrayList<>(List.of(this.getClass().getDeclaredFields()));
     }
 
     public <T> T getFieldValue(Field field) {
         try {
             return (T) field.get(this);
         } catch (IllegalAccessException e) {
-            System.out.println(e);
+            throw new IllegalArgumentException(e);
         }
-        return null;
     }
 }

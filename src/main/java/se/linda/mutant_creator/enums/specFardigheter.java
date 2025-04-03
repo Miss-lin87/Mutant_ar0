@@ -15,4 +15,8 @@ public enum specFardigheter{
     specFardigheter(String descrip) {
         this.descrip = descrip;
     }
+
+    public String getDescrip() {
+        return this.descrip;
+    }
 }

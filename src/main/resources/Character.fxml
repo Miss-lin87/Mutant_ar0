@@ -12,6 +12,6 @@
     </padding>
 
     <Label fx:id="name"/>
-    <Text fx:value="${playerName}"></Text>
+    <Text fx:id="palyerName"></Text>
     <Label fx:id="welcomeText"/>
 </VBox>

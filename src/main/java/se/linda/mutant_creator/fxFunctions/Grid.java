@@ -19,6 +19,10 @@ public class Grid {
         return this.grid;
     }
 
+    public void setPadding(int v, int v1, int v2, int v3) {
+        this.grid.setPadding(new Insets(v,v1,v2,v3));
+    }
+
     public GridPane addNode(GridPane grid, int row, int colum, Node node) {
         grid.add(node, colum, row);
         return grid;
