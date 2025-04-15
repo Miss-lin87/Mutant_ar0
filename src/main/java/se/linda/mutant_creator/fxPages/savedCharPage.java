@@ -1,27 +1,22 @@
-package se.linda.mutant_creator.fxFunctions;
+package se.linda.mutant_creator.fxPages;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import se.linda.mutant_creator.fxapps.savedCharApp;
+import net.minidev.json.parser.ParseException;
+import se.linda.mutant_creator.fxControllers.savedController;
+import se.linda.mutant_creator.fxFunctions.Grid;
+import se.linda.mutant_creator.fxFunctions.stageSetter;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class savedCharsController extends Application {
-    @FXML
-    public Label name = new Label("Test");
-    @FXML
-    public Text palyerName = new Text("Linda");
+public class savedCharPage extends Application {
     private Grid grid = new Grid();
     private GridPane mainGrid = grid.getGrid(10,10, false);
     private int maxRowCount = 5;
@@ -44,7 +39,7 @@ public class savedCharsController extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+        launch();
     }
 
     private void populateGrid() {
@@ -70,34 +65,27 @@ public class savedCharsController extends Application {
         }
     }
 
-    private void buttonFunction(Button button, String character) {
+    private void buttonFunction(Button button, String characterName) {
+        FXMLLoader playerPage = new FXMLLoader(getClass().getResource("/fxPages/Character.fxml"));
         button.setOnAction(EventHandler -> {
-            FXMLLoader hello = new FXMLLoader(savedCharsController.class.getResource("Users/loric/Java projects/Mutant_Creator/src/main/resources/se/linda/mutant_creator/Character.fxml"));
-            FXMLLoader test = new FXMLLoader(savedCharsController.class.getResource("Character.fxml"));
             Scene scene;
-            palyerName.setText("Linda");
             try {
-                scene = new Scene(test.load(), 320,240);
+                playerPage.setController(new savedController(characterName));
+                scene = new Scene(playerPage.load(), 320,240);
                 Stage stage = new Stage();
                 stage.setScene(scene);
                 stage.show();
-            } catch (IOException e) {
+            } catch (IOException | ParseException e) {
                 throw new RuntimeException(e);
             }
         });
     }
 
-    private void setStage(GridPane grid, Stage stage) {
-        Scene scene = new Scene(grid, 300, 275);
-        stage.setTitle("Saved Characters");
-        stage.setScene(scene);
-        stage.show();
-    }
-
     @Override
     public void start(Stage stage) {
+        stageSetter set = new stageSetter();
         getCharacters();
         populateGrid();
-        setStage(mainGrid, stage);
+        set.setStage(stage, mainGrid, 320, 275, "Saved Characters");
     }
 }

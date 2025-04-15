@@ -10,7 +10,7 @@ import static se.linda.mutant_creator.enums.stats.*;
 public class MakeChar {
     private String name;
     private klasser klass;
-    private HashMap<fardigheter, Integer>skills;
+    private HashMap<fardigheter, Integer> skills;
     private EnumMap<stats, Integer> stats;
     private HashMap<specFardigheter, Integer> specSkill;
     private Map<equipment, Integer> backpack;
@@ -34,7 +34,7 @@ public class MakeChar {
         switch (fardighet) {
             case KAMPA_PA, TA_KRAFTTAG, SLASS -> returnValue = stats.get(STYRKA);
             case SMYGA, FLY, SKJUTA -> returnValue = stats.get(KYLA);
-            case SPEJA, FORSTA_SIG_PÅ, KANNA_ZONEN -> returnValue = stats.get(SKARPA);
+            case SPEJA, FORSTA_SIG_PA, KANNA_ZONEN -> returnValue = stats.get(SKARPA);
             case GENOMSKADA, MANIPULERA, VARDA -> returnValue = stats.get(KANSLA);
         }
         return returnValue;

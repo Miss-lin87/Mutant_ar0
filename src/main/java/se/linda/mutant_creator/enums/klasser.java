@@ -19,8 +19,4 @@ public enum klasser {
     public String getName(){
         return this.name;
     }
-
-    public String toString(klasser klass) {
-        return klass.getName();
-    }
 }

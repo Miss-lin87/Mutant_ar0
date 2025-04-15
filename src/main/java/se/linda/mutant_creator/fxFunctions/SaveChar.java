@@ -8,6 +8,8 @@ import se.linda.mutant_creator.Player_functions.MakeChar;
 
 import java.io.*;
 import java.lang.reflect.Field;
+import java.security.Key;
+import java.util.Map;
 
 public class SaveChar {
     private String name;
@@ -18,14 +20,6 @@ public class SaveChar {
         this.player = player;
         this.name = name;
         this.jsonArray = new JSONArray();
-    }
-
-    private void fillFile(MakeChar player) throws JSONException {
-        for (Field F : player.getFields()) {
-            JSONObject tempData = new JSONObject();
-            tempData.put(F.getName(), player.getFieldValue(F).toString());
-            this.jsonArray.put(tempData);
-        }
     }
 
     private boolean checkAvilability(String name) {
@@ -40,14 +34,22 @@ public class SaveChar {
         return false;
     }
 
+    public void fillFile() throws JSONException {
+        for (Field F : player.getClass().getDeclaredFields()) {
+            JSONObject tempData = new JSONObject();
+            tempData.put(F.getName(), player.getFieldValue(F));
+            this.jsonArray.put(tempData);
+        }
+    }
+
     public void save() throws IOException {
         try {
             File temp = new File("src/main/java/se/linda/mutant_creator/characters/" + this.name + ".json");
             if (temp.createNewFile()) {
                 FileWriter file = new FileWriter("src/main/java/se/linda/mutant_creator/characters/" + this.name + ".json");
                 BufferedWriter write = new BufferedWriter(file);
-                fillFile(this.player);
-                write.write(jsonArray.toString());
+                fillFile();
+                write.write(this.jsonArray.toString());
                 write.close();
             } else {
                 throw new IOException();

@@ -1,12 +1,7 @@
-package se.linda.mutant_creator.fxapps;
+package se.linda.mutant_creator.fxPages;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -21,30 +16,31 @@ import se.linda.mutant_creator.enums.*;
 import se.linda.mutant_creator.functions.converters;
 import se.linda.mutant_creator.functions.funcs;
 import se.linda.mutant_creator.fxFunctions.Grid;
+import se.linda.mutant_creator.fxFunctions.stageSetter;
 
 import java.io.IOException;
 import java.util.*;
 
 import static se.linda.mutant_creator.enums.stats.*;
 
-public class makeCharApplication extends Application {
+public class makeCharPage extends Application {
     private final Grid grid = new Grid();
-    private final GridPane mainGrid = grid.getGrid(5,5, true);
+    private final GridPane mainGrid = grid.getGrid(5,5, false);
     private int statPoints = 6;
     private int skillPoints = 10;
     //Texts
-    private Text Styrka = new Text(STYRKA.getName());
-    private Text Kyla = new Text(KYLA.getName());
-    private Text Skärpa = new Text(SKARPA.getName());
-    private Text Känsla = new Text(KANSLA.getName());
+    private Text Styrka = new Text(STYRKA.name);
+    private Text Kyla = new Text(KYLA.name);
+    private Text Skärpa = new Text(SKARPA.name);
+    private Text Känsla = new Text(KANSLA.name);
     private final Text statPointsText = new Text(String.valueOf(statPoints));
     private final Text skillPointsText = new Text(String.valueOf(skillPoints));
     //Maps
     private EnumMap<stats, Integer> statsMap = new EnumMap<>(Map.of(
-            STYRKA, STYRKA.getValue(),
-            KYLA, KYLA.getValue(),
-            SKARPA, SKARPA.getValue(),
-            KANSLA, KANSLA.getValue()));
+            STYRKA, 2,
+            KYLA, 2,
+            SKARPA, 2,
+            KANSLA, 2));
     private final HashMap<fardigheter, Integer> skillsMap = new HashMap<>();
     private HashMap<specFardigheter, Integer> specSkill = new HashMap<>();
     private String bestStat = "";
@@ -75,23 +71,12 @@ public class makeCharApplication extends Application {
     private void bestStatVisibility(stats stat) {
         setHighlight(false, Styrka, Kyla, Skärpa, Känsla);
         switch (stat) {
-            case STYRKA -> {
-                bestStat = STYRKA.name;
-                setHighlight(true, Styrka);
-            }
-            case KYLA -> {
-                bestStat = KYLA.name;
-                setHighlight(true, Kyla);
-            }
-            case SKARPA -> {
-                bestStat = SKARPA.name;
-                setHighlight(true, Skärpa);
-            }
-            case KANSLA -> {
-                bestStat = KANSLA.name;
-                setHighlight(true, Känsla);
-            }
+            case STYRKA -> setHighlight(true, Styrka);
+            case KYLA -> setHighlight(true, Kyla);
+            case SKARPA -> setHighlight(true, Skärpa);
+            case KANSLA -> setHighlight(true, Känsla);
         }
+        bestStat = stat.name;
     }
 
     private void lowerMaxStat() {
@@ -163,13 +148,13 @@ public class makeCharApplication extends Application {
                 warning.setContentText("Please select a talent");
                 warning.show();
             } else {
-                mainApplication.player = new MakeChar(name.getText(),
+                mainPage.player = new MakeChar(name.getText(),
                         con.stringTOEnum(klasserMenu.getText(), klasser.values()),
                         skillsMap,
                         statsMap,
                         specSkill,
                         new Equipment(con.stringTOEnum(klasserMenu.getText(), klasser.values())).getEquipment());
-                mainApplication.character.setText(mainApplication.player.getName());
+                mainPage.character.setText(mainPage.player.getName());
                 stage.close();
             }
         });
@@ -374,27 +359,21 @@ public class makeCharApplication extends Application {
         submit.setDisable(true);
     }
 
-    private void pupulateGrid() {
+    private void pupulateGrid(Stage stage) {
         popColumZero();
         popColumOne();
         popColumTwo();
         popColumThree();
         popColumFour();
-    }
-
-    private void setStage(Stage stage, GridPane grid, int V, int V1, String title) {
         submitFunction(stage);
         buttonFunction(stage);
-        Scene mainScene = new Scene(grid,V,V1);
-        stage.setTitle(title);
-        stage.setScene(mainScene);
-        stage.show();
     }
 
     @Override
     public void start(Stage stage) throws IOException {
+        stageSetter set = new stageSetter();
         setVisibility();
-        pupulateGrid();
-        setStage(stage, mainGrid,525,450,"New Character");
+        pupulateGrid(stage);
+        set.setStage(stage, mainGrid, 525, 450, "New Character");
     }
 }

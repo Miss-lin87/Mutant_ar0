@@ -9,7 +9,6 @@ import java.util.List;
 
 import static se.linda.mutant_creator.enums.klasser.*;
 import static se.linda.mutant_creator.enums.specFardigheter.*;
-import static se.linda.mutant_creator.enums.specFardigheter.UTHARDA;
 
 public class converters {
 
@@ -50,7 +49,7 @@ public class converters {
             case KRONIKOR -> temp = INSPIRERA;
             case BOSS -> temp = KOMMENDERA;
             case SLAV -> temp = UTHARDA;
-            default -> throw new IllegalStateException("Unexpected value: " + klass);
+            default -> throw new IllegalStateException("Unexpected: " + klass);
         }
         return temp;
     }

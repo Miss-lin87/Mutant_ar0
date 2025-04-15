@@ -1,4 +1,4 @@
-package se.linda.mutant_creator.fxapps;
+package se.linda.mutant_creator.fxPages;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -10,13 +10,12 @@ import javafx.stage.Stage;
 import se.linda.mutant_creator.Player_functions.MakeChar;
 import se.linda.mutant_creator.fxFunctions.SaveChar;
 import se.linda.mutant_creator.fxFunctions.Grid;
+import se.linda.mutant_creator.fxFunctions.stageSetter;
 
 import java.io.IOException;
 
-public class mainApplication extends Application {
-    private Button statsButton = new Button("Change Stats");
+public class mainPage extends Application {
     private Button newChar = new Button("Make Character");
-    private Button testInfor = new Button("Test");
     private Button equipment = new Button("Equipment");
     private Button save = new Button("Save");
     private Grid grid = new Grid();
@@ -25,22 +24,8 @@ public class mainApplication extends Application {
     public static Text character = new Text("");
 
     private void buttonFuctions() {
-        /*statsButton.setOnAction(actionEvent -> {
-            if (player == null) {
-                Alert error = new Alert(Alert.AlertType.ERROR);
-                error.setContentText("Character cant be empty");
-                error.show();
-            } else {
-                StatsApplication stats = new StatsApplication();
-                try {
-                    stats.start(new Stage());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });*/
         newChar.setOnAction(actionEvent -> {
-            makeCharApplication newplayer = new makeCharApplication();
+            makeCharPage newplayer = new makeCharPage();
             try {
                 newplayer.start(new Stage());
             } catch (IOException g) {
@@ -53,7 +38,7 @@ public class mainApplication extends Application {
                 error.setContentText("Character cant be empty");
                 error.show();
             } else {
-            equipmentApplication equipment = new equipmentApplication();
+            equipmentPage equipment = new equipmentPage();
             try {
                 equipment.start(new Stage());
             } catch (IOException e) {
@@ -61,10 +46,6 @@ public class mainApplication extends Application {
             }
         }
         });
-        /*testInfor.setOnAction(actionEvent -> {
-            System.out.println(player.getName());
-            System.out.println(player.getKlass());
-        });*/
         save.setOnAction(ActionEvent -> {
             if (player == null) {
                 Alert error = new Alert(Alert.AlertType.ERROR);
@@ -100,20 +81,14 @@ public class mainApplication extends Application {
     private void populateGrid() {
         addText();
         addButtons();
-    }
-
-    private void setStage(Stage stage, GridPane grid, int V, int V1, String title) {
-        populateGrid();
         buttonFuctions();
-        Scene mainScene = new Scene(grid,V,V1);
-        stage.setTitle(title);
-        stage.setScene(mainScene);
-        stage.show();
     }
 
     @Override
     public void start(Stage stage) {
-        setStage(stage, mainGrid, 340,275,"Main");
+        stageSetter set = new stageSetter();
+        populateGrid();
+        set.setStage(stage, mainGrid, 340,275,"Main");
     }
 
     public static void main() {

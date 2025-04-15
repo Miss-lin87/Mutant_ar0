@@ -6,9 +6,14 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import net.minidev.json.JSONArray;
+import se.linda.mutant_creator.enums.equipment;
+import se.linda.mutant_creator.enums.fardigheter;
+import se.linda.mutant_creator.functions.converters;
+import se.linda.mutant_creator.functions.savedCharFunctions;
 import se.linda.mutant_creator.fxFunctions.Grid;
-import se.linda.mutant_creator.fxapps.mainApplication;
-import se.linda.mutant_creator.fxFunctions.savedCharsController;
+import se.linda.mutant_creator.fxPages.mainPage;
+import se.linda.mutant_creator.fxPages.savedCharPage;
 
 public class Main extends Application {
     private Grid grid = new Grid();
@@ -19,16 +24,15 @@ public class Main extends Application {
 
     private void buttonFunction(Stage stage) {
         charCreator.setOnAction(EventHander -> {
-            mainApplication main = new mainApplication();
+            mainPage main = new mainPage();
             try {
-                stage.close();
                 main.start(new Stage());
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         });
         savedChars.setOnAction(EventHandler -> {
-            savedCharsController saved = new savedCharsController();
+            savedCharPage saved = new savedCharPage();
             try {
                 saved.start(new Stage());
             } catch (Exception e) {
