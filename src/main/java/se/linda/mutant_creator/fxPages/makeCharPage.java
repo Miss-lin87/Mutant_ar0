@@ -17,10 +17,8 @@ import se.linda.mutant_creator.functions.converters;
 import se.linda.mutant_creator.functions.funcs;
 import se.linda.mutant_creator.fxFunctions.Grid;
 import se.linda.mutant_creator.fxFunctions.stageSetter;
-
 import java.io.IOException;
 import java.util.*;
-
 import static se.linda.mutant_creator.enums.stats.*;
 
 public class makeCharPage extends Application {
@@ -36,13 +34,13 @@ public class makeCharPage extends Application {
     private final Text statPointsText = new Text(String.valueOf(statPoints));
     private final Text skillPointsText = new Text(String.valueOf(skillPoints));
     //Maps
-    private EnumMap<stats, Integer> statsMap = new EnumMap<>(Map.of(
+    private final EnumMap<stats, Integer> statsMap = new EnumMap<>(Map.of(
             STYRKA, 2,
             KYLA, 2,
             SKARPA, 2,
             KANSLA, 2));
     private final HashMap<fardigheter, Integer> skillsMap = new HashMap<>();
-    private HashMap<specFardigheter, Integer> specSkill = new HashMap<>();
+    private final HashMap<specFardigheter, Integer> specSkill = new HashMap<>();
     private String bestStat = "";
     private final TextField name = new TextField();
     private final Menu klasserMenu = new Menu("Klasser");
@@ -51,19 +49,13 @@ public class makeCharPage extends Application {
     private final Button info = new Button("?");
     private final Button close = new Button("Cancel");
     private final Alert warning = new Alert(Alert.AlertType.ERROR);
-    private converters con = new converters();
+    private final converters con = new converters();
     private boolean nameTaken = false;
 
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-
     private void setHighlight(boolean OnOff, Text... text) {
-        boolean highlight = OnOff;
         Color highlightColor = OnOff ? Color.GREEN : Color.BLACK;
         for (Text T : text) {
-            T.setUnderline(highlight);
+            T.setUnderline(OnOff);
             T.setFill(highlightColor);
         }
     }
@@ -80,21 +72,19 @@ public class makeCharPage extends Application {
     }
 
     private void lowerMaxStat() {
-        for (stats stat : statsMap.keySet()) {
-            if (statsMap.get(stat) == 5 && !con.getKlassList(stat).contains(klasserMenu.getText())) {
-                statsMap.put(stat, 4);
-                setStatPointValue();
-                ((Text) mainGrid.getChildren().get(mainGrid.getChildren().indexOf(Objects.requireNonNull(mainGrid.lookup("#"+stat.name()))))).setText("4");
-                statPointsText.setText(String.valueOf(statPoints));
-            }
-        }
+        statsMap.keySet().stream().filter(stat -> statsMap.get(stat) == 5 && !con.getKlassList(stat).contains(klasserMenu.getText())).forEach(stat -> {
+            statsMap.put(stat, 4);
+            setStatPointValue();
+            ((Text) mainGrid.getChildren().get(mainGrid.getChildren().indexOf(Objects.requireNonNull(mainGrid.lookup("#" + stat.name()))))).setText("4");
+            statPointsText.setText(String.valueOf(statPoints));
+        });
     }
 
     private VBox makeKlassMenu() {
         MenuBar mb = new MenuBar();
         for (klasser klass: klasser.values()) {
             MenuItem temp = new MenuItem(klass.getName());
-            temp.setOnAction(EventHandler -> {
+            temp.setOnAction(_ -> {
                 if (Objects.equals(klasserMenu.getText(),"Klasser")) {
                     bestStatVisibility(new Basestats(klass).getBeststat());
                     klasserMenu.setText(klass.getName());
@@ -124,7 +114,7 @@ public class makeCharPage extends Application {
         talentsMenu.getItems().clear();
         for (talanger talang : new Talent(con.stringTOEnum(klasserMenu.getText(), klasser.values())).getTalents()) {
             MenuItem temp = new MenuItem(talang.getName());
-            temp.setOnAction(EventHandler -> {
+            temp.setOnAction(_ -> {
                 talentsMenu.setText(talang.getName());
                 if (submit.isDisable()){
                     extendView();
@@ -137,7 +127,7 @@ public class makeCharPage extends Application {
     }
 
     private void submitFunction(Stage stage) {
-        submit.setOnAction(EventHandler -> {
+        submit.setOnAction(_ -> {
             if (name.getText().isBlank()) {
                 warning.setContentText("Name cant be empty");
                 warning.show();
@@ -173,10 +163,7 @@ public class makeCharPage extends Application {
                 info.setTooltip(tip);
             }
         });
-        close.setOnAction(EventHandler -> {
-            stage.close();
-        });
-        name.setOnKeyReleased(KeyEvent -> {
+        name.setOnKeyReleased(_ -> {
             String tempName = name.getText();
             List<String> names = new funcs().getCharNames();
             if (names.contains(tempName)) {
@@ -187,6 +174,7 @@ public class makeCharPage extends Application {
                 name.setStyle("-fx-text-fill: black;");
             }
         });
+        close.setOnAction(_ -> stage.close());
     }
 
     private void extendView() {
@@ -247,7 +235,7 @@ public class makeCharPage extends Application {
 
     private Button makeSpecSkillButton(String label, specFardigheter skill, int value) {
         Button temp = new Button(label);
-        temp.setOnAction(EventHandler -> {
+        temp.setOnAction(_ -> {
             int tempInt = Math.max(specSkill.get(skill)+value, 1);
             if (skillPoints > 0 && tempInt < 4 || value < 0 && tempInt < 4 && skillPoints > -1) {
                 specSkill.put(skill, tempInt);
@@ -261,7 +249,7 @@ public class makeCharPage extends Application {
 
     private Button makeSkillButtons(String Label, fardigheter skill, int value) {
         Button temp = new Button(Label);
-        temp.setOnAction(EventHandler -> {
+        temp.setOnAction(_ -> {
             int tempInt = Math.max(skillsMap.get(skill)+value, 0);
             if (skillPoints > 0 && tempInt < 4 || value < 0 && tempInt < 4 && skillPoints > -1) {
                 skillsMap.put(skill, tempInt);
@@ -275,7 +263,7 @@ public class makeCharPage extends Application {
 
     private Button makeStatsButton(String Label, stats stat, int value) {
         Button temp = new Button(Label);
-        temp.setOnAction(EventHandler -> {
+        temp.setOnAction(_ -> {
             int maxStat = stat.name.equals(bestStat) ? 6 : 5;
             int tempInt = Math.max(statsMap.get(stat)+value, 2);
             if (statPoints > 0 && tempInt < maxStat || value < 0 && tempInt < maxStat && statPoints > -1) {
@@ -375,5 +363,9 @@ public class makeCharPage extends Application {
         setVisibility();
         pupulateGrid(stage);
         set.setStage(stage, mainGrid, 525, 450, "New Character");
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }

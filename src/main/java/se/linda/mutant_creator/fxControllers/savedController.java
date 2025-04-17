@@ -2,16 +2,22 @@ package se.linda.mutant_creator.fxControllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import net.minidev.json.parser.ParseException;
 import se.linda.mutant_creator.contructors.fardighet;
 import se.linda.mutant_creator.enums.fardigheter;
 import se.linda.mutant_creator.enums.specFardigheter;
-import se.linda.mutant_creator.functions.savedCharFunctions;
-import se.linda.mutant_creator.functions.tempData;
+import se.linda.mutant_creator.contructors.tempData;
 
 import java.io.FileNotFoundException;
 import java.net.URL;
@@ -21,7 +27,7 @@ import static se.linda.mutant_creator.enums.equipment.*;
 import static se.linda.mutant_creator.enums.stats.*;
 
 public class savedController implements Initializable {
-    private tempData player;
+    private final tempData player;
     @FXML private Text playerName;
     @FXML private Text playerklass;
     @FXML private Text playerStyrka;
@@ -34,6 +40,7 @@ public class savedController implements Initializable {
     @FXML private TableView<fardighet> skillsTable;
     @FXML private TableColumn<fardighet, String> nameColumn = new TableColumn<>("Name");
     @FXML private TableColumn<fardighet, String> valueColumn = new TableColumn<>("Value");
+    @FXML private Button closeButton = new Button("Close");
 
     public savedController(String name) throws FileNotFoundException, ParseException {
         this.player = new tempData(name);
@@ -52,6 +59,8 @@ public class savedController implements Initializable {
     }
 
     private void setSkillsTable() {
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("skillName"));
+        valueColumn.setCellValueFactory(new PropertyValueFactory<>("skillValue"));
         for (fardigheter skill : player.getSkills().keySet()) {
             skillsTable.getItems().add(new fardighet(skill.getName(), String.valueOf(player.getSkills().get(skill))));
         }
@@ -66,19 +75,27 @@ public class savedController implements Initializable {
         vattenValue.setText(String.valueOf(player.getBackpack().get(VATTEN)));
     }
 
+    private void buttonFunction() {
+        closeButton.setFont(Font.font("", FontWeight.BOLD, 12));
+        closeButton.setBackground(new Background(new BackgroundFill(Color.RED, null, new Insets(2))));
+        closeButton.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(4), new BorderWidths(3))));
+        closeButton.setOnAction(_ -> {
+            Stage stage = (Stage) playerName.getScene().getWindow();
+            stage.close();
+        });
+    }
+
+    public void start() {
+        setBaseInfo();
+        setStats();
+        setSkillsTable();
+        setEquipment();
+        buttonFunction();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            this.player = new tempData("Linda");
-            setBaseInfo();
-            setStats();
-            nameColumn.setCellValueFactory(new PropertyValueFactory<>("skillName"));
-            valueColumn.setCellValueFactory(new PropertyValueFactory<>("skillValue"));
-            setSkillsTable();
-            setEquipment();
-        } catch (FileNotFoundException | ParseException e) {
-            throw new RuntimeException(e);
-        }
+        start();
     }
 
     public Text getPlayerklass() {

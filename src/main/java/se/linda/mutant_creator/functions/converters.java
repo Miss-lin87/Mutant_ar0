@@ -14,12 +14,12 @@ public class converters {
 
     public <T> T stringTOEnum(String name, T[] enumValues) {
         T temp = null;
+        name = name.toUpperCase()
+                .replace("Å", "A")
+                .replace("Ä", "A")
+                .replace("Ö", "O")
+                .replace(" ", "_");
         for (T value : enumValues) {
-            name = name.toUpperCase()
-                    .replace("Å", "A")
-                    .replace("Ä", "A")
-                    .replace("Ö", "O")
-                    .replace(" ", "_");
             if (name.equals(value.toString())) {
                 temp = value;
             }

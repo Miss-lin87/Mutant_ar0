@@ -22,8 +22,7 @@ public class Equipment {
             case KROSSARE -> this.backpack.replace(KRUBB, backpack.get(KRUBB), +D.D6(one));
             case SKROTSKALLE, FIXARE -> this.backpack.replace(PATRONER, backpack.get(PATRONER), +D.D6(one));
             case ZONSTRYKARE -> this.backpack.put(VATTEN, +D.D6(one));
-            case MUTANT_MED_HUND, KRONIKOR -> {
-            }
+            case MUTANT_MED_HUND, KRONIKOR -> {}
             case BOSS -> this.backpack.putAll(Map.of(PATRONER, +D.D6(one), KRUBB, +D.D6(one)));
             case SLAV -> this.backpack.put(PATRONER, 0);
         }

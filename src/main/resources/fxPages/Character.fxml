@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
 
 <?import javafx.scene.text.Text?>
 <VBox spacing="10" xmlns="http://javafx.com/javafx/8.0.171"
@@ -53,6 +52,6 @@
         <Text fx:id="vattenValue" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
     </TitledPane>
 
-    <Button text="Save"/>
+    <Button text="Close" fx:id="closeButton"/>
 
 </VBox>

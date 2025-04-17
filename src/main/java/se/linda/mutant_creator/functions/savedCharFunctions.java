@@ -13,9 +13,9 @@ import java.util.List;
 import java.util.Map;
 
 public class savedCharFunctions {
-    private List<String> charNames = new ArrayList<>();
-    private String path = "src/main/java/se/linda/mutant_creator/characters/%s.json";
-    private JSONParser parser = new JSONParser();
+    private final List<String> charNames = new ArrayList<>();
+    private final String path = "src/main/java/se/linda/mutant_creator/characters/%s.json";
+    private final JSONParser parser = new JSONParser();
     private FileReader reader;
 
     private void getCharacters() {
@@ -34,7 +34,7 @@ public class savedCharFunctions {
         return charNames;
     }
 
-    public JSONArray getRawData(String name) throws ParseException, FileNotFoundException {
+    private JSONArray getRawData(String name) throws ParseException, FileNotFoundException {
         this.reader = new FileReader(path.formatted(name));
         return (JSONArray) parser.parse(reader);
     }

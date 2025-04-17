@@ -1,20 +1,16 @@
 package se.linda.mutant_creator.fxFunctions;
 
-import javafx.scene.control.Alert;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import se.linda.mutant_creator.Player_functions.MakeChar;
-
 import java.io.*;
 import java.lang.reflect.Field;
-import java.security.Key;
-import java.util.Map;
 
 public class SaveChar {
-    private String name;
-    private MakeChar player;
-    private JSONArray jsonArray;
+    private final String name;
+    private final MakeChar player;
+    private final JSONArray jsonArray;
 
     public SaveChar(String name, MakeChar player) throws IOException {
         this.player = player;

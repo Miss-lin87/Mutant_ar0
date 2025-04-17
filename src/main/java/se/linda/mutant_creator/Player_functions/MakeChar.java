@@ -8,18 +8,18 @@ import java.util.*;
 import static se.linda.mutant_creator.enums.stats.*;
 
 public class MakeChar {
-    private String name;
-    private klasser klass;
-    private HashMap<fardigheter, Integer> skills;
-    private EnumMap<stats, Integer> stats;
-    private HashMap<specFardigheter, Integer> specSkill;
-    private Map<equipment, Integer> backpack;
+    private final String name;
+    private final klasser klass;
+    private final Map<fardigheter, Integer> skills;
+    private final Map<stats, Integer> stats;
+    private Map<specFardigheter, Integer> specSkill;
+    private final Map<equipment, Integer> backpack;
 
     public MakeChar(String name,
                     klasser klass,
-                    HashMap<fardigheter, Integer> skillsMap,
-                    EnumMap<stats, Integer> statsMap,
-                    HashMap<specFardigheter, Integer> specMap,
+                    Map<fardigheter, Integer> skillsMap,
+                    Map<stats, Integer> statsMap,
+                    Map<specFardigheter, Integer> specMap,
                     Map<equipment, Integer> backpack) {
         this.name = name;
         this.klass = klass;
@@ -47,13 +47,11 @@ public class MakeChar {
     public klasser getKlass() {
         return this.klass;
     }
-    public HashMap<fardigheter, Integer> getSkills() {
-        for (fardigheter fardighet : skills.keySet()) {
-            skills.put(fardighet, +setSkillBase(fardighet));
-        }
+    public Map<fardigheter, Integer> getSkills() {
+        skills.keySet().forEach(fardighet -> skills.put(fardighet, +setSkillBase(fardighet)));
         return this.skills;
     }
-    public EnumMap<stats, Integer> getStats() {
+    public Map<stats, Integer> getStats() {
         return stats;
     }
     public Map<equipment, Integer> getBackpack() {

@@ -17,10 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class savedCharPage extends Application {
-    private Grid grid = new Grid();
-    private GridPane mainGrid = grid.getGrid(10,10, false);
-    private int maxRowCount = 5;
-    private List<String> charNames = new ArrayList<>();
+    private final Grid grid = new Grid();
+    private final GridPane mainGrid = grid.getGrid(10,10, false);
+    private final int maxRowCount = 5;
+    private final List<String> charNames = new ArrayList<>();
 
     private void getCharacters() {
         File folder = new File("src/main/java/se/linda/mutant_creator/characters");
@@ -38,15 +38,11 @@ public class savedCharPage extends Application {
         return charNames;
     }
 
-    public static void main(String[] args) {
-        launch();
+    private void populateGrid(Stage stage) {
+        addButtons(stage);
     }
 
-    private void populateGrid() {
-        addButtons();
-    }
-
-    private void addButtons() {
+    private void addButtons(Stage stage) {
         int rowcount = 0;
         int columCount = 0;
         for (String character: charNames) {
@@ -63,15 +59,17 @@ public class savedCharPage extends Application {
                 mainGrid.add(temp, columCount, rowcount);
             }
         }
+        grid.addNodes(mainGrid,mainGrid.getRowCount(), 0,
+                grid.closeButton(stage));
     }
 
     private void buttonFunction(Button button, String characterName) {
         FXMLLoader playerPage = new FXMLLoader(getClass().getResource("/fxPages/Character.fxml"));
-        button.setOnAction(EventHandler -> {
+        button.setOnAction(_ -> {
             Scene scene;
             try {
                 playerPage.setController(new savedController(characterName));
-                scene = new Scene(playerPage.load(), 320,240);
+                scene = new Scene(playerPage.load(), 400,740);
                 Stage stage = new Stage();
                 stage.setScene(scene);
                 stage.show();
@@ -85,7 +83,11 @@ public class savedCharPage extends Application {
     public void start(Stage stage) {
         stageSetter set = new stageSetter();
         getCharacters();
-        populateGrid();
+        populateGrid(stage);
         set.setStage(stage, mainGrid, 320, 275, "Saved Characters");
+    }
+
+    public static void main(String[] args) {
+        launch();
     }
 }

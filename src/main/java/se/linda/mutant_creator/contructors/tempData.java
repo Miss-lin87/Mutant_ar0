@@ -1,24 +1,19 @@
-package se.linda.mutant_creator.functions;
+package se.linda.mutant_creator.contructors;
 
-import net.minidev.json.JSONArray;
-import net.minidev.json.parser.JSONParser;
 import net.minidev.json.parser.ParseException;
 import se.linda.mutant_creator.enums.*;
-
+import se.linda.mutant_creator.functions.savedCharFunctions;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.EnumMap;
-import java.util.HashMap;
 import java.util.Map;
 
 public class tempData {
-    private String name;
-    private klasser klass;
-    private Map<fardigheter, Integer> skills;
-    private Map<stats, Integer> charStats;
-    private Map<specFardigheter, Integer> specSkill;
-    private Map<equipment, Integer> backpack;
-    private savedCharFunctions saved = new savedCharFunctions();
+    private final String name;
+    private final klasser klass;
+    private final Map<fardigheter, Integer> skills;
+    private final Map<stats, Integer> charStats;
+    private final Map<specFardigheter, Integer> specSkill;
+    private final Map<equipment, Integer> backpack;
+    private final savedCharFunctions saved = new savedCharFunctions();
 
     public tempData(String name) throws FileNotFoundException, ParseException {
         this.name = name;

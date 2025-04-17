@@ -2,38 +2,50 @@ package se.linda.mutant_creator.fxFunctions;
 
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.layout.GridPane;
+import javafx.scene.control.Button;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
 
 public class Grid {
-    private GridPane grid;
+    private final GridPane mainGrid;
 
     public Grid(){
-        this.grid = new GridPane();
+        this.mainGrid = new GridPane();
     }
 
     public GridPane getGrid(int vGap, int hGap, boolean visibility) {
-        this.grid.setVgap(vGap);
-        this.grid.setHgap(hGap);
-        this.grid.setPadding(new Insets(10, 10, 10, 10));
-        this.grid.setGridLinesVisible(visibility);
-        return this.grid;
+        this.mainGrid.setVgap(vGap);
+        this.mainGrid.setHgap(hGap);
+        this.mainGrid.setPadding(new Insets(10, 10, 10, 10));
+        this.mainGrid.setGridLinesVisible(visibility);
+        return this.mainGrid;
     }
 
     public void setPadding(int v, int v1, int v2, int v3) {
-        this.grid.setPadding(new Insets(v,v1,v2,v3));
+        this.mainGrid.setPadding(new Insets(v,v1,v2,v3));
     }
 
-    public GridPane addNode(GridPane grid, int row, int colum, Node node) {
+    public void addNode(GridPane grid, int row, int colum, Node node) {
         grid.add(node, colum, row);
-        return grid;
     }
 
-    public GridPane addNodes(GridPane grid, int row, int colum, Node... nodes) {
+    public void addNodes(GridPane grid, int row, int colum, Node... nodes) {
         int startRow = 0;
         for (Node N : nodes) {
             grid.add(N, colum, row + startRow);
             startRow ++;
         }
-        return grid;
+    }
+
+    public Button closeButton(Stage stage) {
+        Button temp = new Button("Close");
+        temp.setFont(Font.font("",FontWeight.BOLD, 12));
+        temp.setBackground(new Background(new BackgroundFill(Color.RED, null, new Insets(2))));
+        temp.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(4), new BorderWidths(3))));
+        temp.setOnAction(_ -> stage.close());
+        return temp;
     }
 }

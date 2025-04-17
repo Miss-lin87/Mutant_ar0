@@ -4,30 +4,31 @@ import java.util.Optional;
 import java.util.Random;
 
 public class diceRolls {
+    private final Random rand = new Random();
 
     public int D6(Optional<Integer> times) {
         if (times.isPresent() && times.get() > 0) {
-            return D6(times.get());
+            return roll(times.get());
         } else {
-            return D6(1);
+            return roll(1);
         }
     }
 
-    private int D6(int times, int number) {
+    private int roll(int times, int number) {
         if (times == 0) {
             return number;
         } else {
-            number += new Random().nextInt(6)+1;
-            return D6(times-1, number);
+            number += rand.nextInt(6)+1;
+            return roll(times-1, number);
         }
     }
 
-    private int D6(int times) {
-        return D6(times, 0);
+    private int roll(int times) {
+        return roll(times, 0);
     }
 
     public String D66(){
-        return D6(1) + "" + D6(1);
+        return roll(1) + "" + roll(1);
     }
 
 

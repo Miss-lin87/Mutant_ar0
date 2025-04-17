@@ -3,11 +3,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Scanner;
-import java.util.logging.Logger;
 
 public class funcs {
-    private List<String> charNames = new ArrayList<>();
+    private final List<String> charNames = new ArrayList<>();
 
     public <T> Optional<T> getOptional(T input) {
         return Optional.ofNullable(input);

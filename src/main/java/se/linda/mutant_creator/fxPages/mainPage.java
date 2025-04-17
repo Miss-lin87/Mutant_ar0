@@ -1,7 +1,6 @@
 package se.linda.mutant_creator.fxPages;
 
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
@@ -11,20 +10,19 @@ import se.linda.mutant_creator.Player_functions.MakeChar;
 import se.linda.mutant_creator.fxFunctions.SaveChar;
 import se.linda.mutant_creator.fxFunctions.Grid;
 import se.linda.mutant_creator.fxFunctions.stageSetter;
-
 import java.io.IOException;
 
 public class mainPage extends Application {
-    private Button newChar = new Button("Make Character");
-    private Button equipment = new Button("Equipment");
-    private Button save = new Button("Save");
-    private Grid grid = new Grid();
-    private GridPane mainGrid = grid.getGrid(10,10, false);
+    private final Button newChar = new Button("Make Character");
+    private final Button equipment = new Button("Equipment");
+    private final Button save = new Button("Save");
+    private final Grid grid = new Grid();
+    private final GridPane mainGrid = grid.getGrid(10,10, false);
     public static MakeChar player;
     public static Text character = new Text("");
 
     private void buttonFuctions() {
-        newChar.setOnAction(actionEvent -> {
+        newChar.setOnAction(_ -> {
             makeCharPage newplayer = new makeCharPage();
             try {
                 newplayer.start(new Stage());
@@ -32,32 +30,30 @@ public class mainPage extends Application {
                 throw new RuntimeException(g);
             }
         });
-        equipment.setOnAction(EventHandler -> {
-            if (player == null) {
-                Alert error = new Alert(Alert.AlertType.ERROR);
-                error.setContentText("Character cant be empty");
-                error.show();
-            } else {
-            equipmentPage equipment = new equipmentPage();
-            try {
-                equipment.start(new Stage());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        });
-        save.setOnAction(ActionEvent -> {
+        equipment.setOnAction(_ -> {
             if (player == null) {
                 Alert error = new Alert(Alert.AlertType.ERROR);
                 error.setContentText("Character cant be empty");
                 error.show();
             } else {
                 try {
-                    SaveChar save = new SaveChar(player.getName(), player);
-                    save.save();
+                    new equipmentPage().start(new Stage());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        save.setOnAction(_ -> {
+            if (player == null) {
+                Alert error = new Alert(Alert.AlertType.ERROR);
+                error.setContentText("Character cant be empty");
+                error.show();
+            } else {
+                try {
+                    new SaveChar(player.getName(), player).save();
                 } catch (IOException e) {
                     Alert error = new Alert(Alert.AlertType.INFORMATION);
-                    error.setContentText("Character already excists");
+                    error.setContentText("Character already exists");
                     error.show();
                 }
             }
@@ -67,9 +63,7 @@ public class mainPage extends Application {
     private void addButtons() {
         grid.addNodes(mainGrid,1,0,
                 newChar,
-                //statsButton,
                 equipment,
-                //testInfor,
                 save);
     }
 

@@ -22,31 +22,20 @@ public class Basestats {
     }
 
     private int getStatValue(stats stat) {
+        int returnValue = 0;
         switch (stat) {
-            case STYRKA -> {
-                return this.styrka;
-            }
-            case KYLA -> {
-                return this.kyla;
-            }
-            case SKARPA -> {
-                return this.skärpa;
-            }
-            case KANSLA -> {
-                return this.känsla;
-            }
+            case STYRKA -> returnValue = this.styrka;
+            case KYLA -> returnValue = this.kyla;
+            case SKARPA -> returnValue = this.skärpa;
+            case KANSLA -> returnValue = this.känsla;
         }
-        return 0;
+        return returnValue;
     }
 
     private boolean checkRange(int addValue, stats stat) {
         if (this.best_stat == stat && getStatValue(stat)+addValue <= 5) {
             return true;
-        } else if (getStatValue(stat)+addValue <= 4) {
-            return true;
-        } else {
-            return false;
-        }
+        } else return getStatValue(stat) + addValue <= 4;
     }
 
     private void findStat(klasser klass){
@@ -140,9 +129,9 @@ public class Basestats {
 
     @Override
     public String toString() {
-        return STYRKA.toString() + " : " + this.styrka + "\n" +
-                SKARPA.toString() + " : " + this.skärpa + "\n" +
-                KANSLA.toString() + " : " + this.känsla + "\n" +
-                KYLA.toString() + " : " + this.kyla;
+        return STYRKA + " : " + this.styrka + "\n" +
+                SKARPA + " : " + this.skärpa + "\n" +
+                KANSLA + " : " + this.känsla + "\n" +
+                KYLA + " : " + this.kyla;
     }
 }
