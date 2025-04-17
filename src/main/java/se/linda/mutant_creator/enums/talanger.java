@@ -9,7 +9,7 @@ public enum talanger {
     UPPFINNARE("Uppfinnare"," "),
     MONSTERJAGARE("Monsterjägare"," "),
     ROTNOS("Rötnos"," "),
-    SAKLETARE("Sakletre"," "),
+    SAKLETARE("Sakletare"," "),
     ELAK_JAVEL("Elak Jävel"," "),
     STORHANDLARE("Storhandlare"," "),
     HALLHAKE("Hållhake"," "),
