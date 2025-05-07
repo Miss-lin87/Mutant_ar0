@@ -1,4 +1,4 @@
-package se.linda.mutant_creator.fxPages;
+package se.linda.mutant_creator.fxpages;
 
 import javafx.application.Application;
 import javafx.scene.control.*;
@@ -8,20 +8,20 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import se.linda.mutant_creator.Player_functions.MakeChar;
-import se.linda.mutant_creator.Player_functions.baseFunctions.Basestats;
-import se.linda.mutant_creator.Player_functions.baseFunctions.Equipment;
-import se.linda.mutant_creator.Player_functions.baseFunctions.Talent;
+import se.linda.mutant_creator.playerfunctions.MakeChar;
+import se.linda.mutant_creator.playerfunctions.basefunctions.Basestats;
+import se.linda.mutant_creator.playerfunctions.basefunctions.Equipment;
+import se.linda.mutant_creator.playerfunctions.basefunctions.Talent;
 import se.linda.mutant_creator.enums.*;
-import se.linda.mutant_creator.functions.converters;
-import se.linda.mutant_creator.functions.funcs;
-import se.linda.mutant_creator.fxFunctions.Grid;
-import se.linda.mutant_creator.fxFunctions.stageSetter;
+import se.linda.mutant_creator.functions.Converters;
+import se.linda.mutant_creator.functions.Funcs;
+import se.linda.mutant_creator.fxfunctions.Grid;
+import se.linda.mutant_creator.fxfunctions.StageSetter;
 import java.io.IOException;
 import java.util.*;
 import static se.linda.mutant_creator.enums.stats.*;
 
-public class makeCharPage extends Application {
+public class MakeCharPage extends Application {
     private final Grid grid = new Grid();
     private final GridPane mainGrid = grid.getGrid(5,5, false);
     private int statPoints = 6;
@@ -49,7 +49,7 @@ public class makeCharPage extends Application {
     private final Button info = new Button("?");
     private final Button close = new Button("Cancel");
     private final Alert warning = new Alert(Alert.AlertType.ERROR);
-    private final converters con = new converters();
+    private final Converters con = new Converters();
     private boolean nameTaken = false;
 
     private void setHighlight(boolean OnOff, Text... text) {
@@ -138,13 +138,13 @@ public class makeCharPage extends Application {
                 warning.setContentText("Please select a talent");
                 warning.show();
             } else {
-                mainPage.player = new MakeChar(name.getText(),
+                MainPage.player = new MakeChar(name.getText(),
                         con.stringTOEnum(klasserMenu.getText(), klasser.values()),
                         skillsMap,
                         statsMap,
                         specSkill,
                         new Equipment(con.stringTOEnum(klasserMenu.getText(), klasser.values())).getEquipment());
-                mainPage.character.setText(mainPage.player.getName());
+                MainPage.character.setText(MainPage.player.getName());
                 stage.close();
             }
         });
@@ -165,7 +165,7 @@ public class makeCharPage extends Application {
         });
         name.setOnKeyReleased(_ -> {
             String tempName = name.getText();
-            List<String> names = new funcs().getCharNames();
+            List<String> names = new Funcs().getCharNames(); //TODO: will load every time a button is pressed
             if (names.contains(tempName)) {
                 nameTaken = true;
                 name.setStyle("-fx-text-fill: red;");
@@ -203,7 +203,7 @@ public class makeCharPage extends Application {
         Text specTemp = new Text("1");
         specFardigheter specSkillName = con.findSpecSkill(con.stringTOEnum(klasserMenu.getText(), klasser.values()));
         specTemp.setId(specSkillName.toString());
-        mainGrid.add(new Text(specSkillName.toString()),column,row);
+        mainGrid.add(new Text(specSkillName.getName()),column,row);
         mainGrid.add(specTemp,column+1, row);
         mainGrid.add(makeSpecSkillButton("+", specSkillName,1),column+2, row);
         mainGrid.add(makeSpecSkillButton("-", specSkillName,-1),column+3, row);
@@ -218,7 +218,7 @@ public class makeCharPage extends Application {
             row++;
             Text tempValue = new Text("0");
             tempValue.setId(skill.name());
-            mainGrid.add(new Text(skill.name()), column, row);
+            mainGrid.add(new Text(skill.getName()), column, row);
             mainGrid.add(tempValue,column+1, row);
             skillsMap.put(skill, 0);
         }
@@ -347,6 +347,7 @@ public class makeCharPage extends Application {
         submit.setDisable(true);
     }
 
+    //TODO change pop
     private void pupulateGrid(Stage stage) {
         popColumZero();
         popColumOne();
@@ -359,10 +360,9 @@ public class makeCharPage extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        stageSetter set = new stageSetter();
         setVisibility();
         pupulateGrid(stage);
-        set.setStage(stage, mainGrid, 525, 450, "New Character");
+        StageSetter.setStage(stage, mainGrid, 525, 450, "New Character");
     }
 
     public static void main(String[] args) {

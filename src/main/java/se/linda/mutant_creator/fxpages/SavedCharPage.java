@@ -1,4 +1,4 @@
-package se.linda.mutant_creator.fxPages;
+package se.linda.mutant_creator.fxpages;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,23 +7,24 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import net.minidev.json.parser.ParseException;
-import se.linda.mutant_creator.fxControllers.savedController;
-import se.linda.mutant_creator.fxFunctions.Grid;
-import se.linda.mutant_creator.fxFunctions.stageSetter;
+import se.linda.mutant_creator.Constants;
+import se.linda.mutant_creator.fxcontrollers.SavedController;
+import se.linda.mutant_creator.fxfunctions.Grid;
+import se.linda.mutant_creator.fxfunctions.StageSetter;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class savedCharPage extends Application {
+public class SavedCharPage extends Application {
     private final Grid grid = new Grid();
     private final GridPane mainGrid = grid.getGrid(10,10, false);
     private final int maxRowCount = 5;
     private final List<String> charNames = new ArrayList<>();
 
     private void getCharacters() {
-        File folder = new File("src/main/java/se/linda/mutant_creator/characters");
+        File folder = new File(Constants.CHAR_PATH);
         File[] listOfFiles = folder.listFiles();
         assert listOfFiles != null;
         for (File file : listOfFiles) {
@@ -42,6 +43,7 @@ public class savedCharPage extends Application {
         addButtons(stage);
     }
 
+    //TO DO, check row count over 5-10
     private void addButtons(Stage stage) {
         int rowcount = 0;
         int columCount = 0;
@@ -68,7 +70,7 @@ public class savedCharPage extends Application {
         button.setOnAction(_ -> {
             Scene scene;
             try {
-                playerPage.setController(new savedController(characterName));
+                playerPage.setController(new SavedController(characterName));
                 scene = new Scene(playerPage.load(), 400,740);
                 Stage stage = new Stage();
                 stage.setScene(scene);
@@ -81,10 +83,9 @@ public class savedCharPage extends Application {
 
     @Override
     public void start(Stage stage) {
-        stageSetter set = new stageSetter();
         getCharacters();
         populateGrid(stage);
-        set.setStage(stage, mainGrid, 320, 275, "Saved Characters");
+        StageSetter.setStage(stage, mainGrid, 320, 275, "Saved Characters");
     }
 
     public static void main(String[] args) {

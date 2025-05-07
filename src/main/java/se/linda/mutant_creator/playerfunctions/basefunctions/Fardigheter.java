@@ -1,9 +1,9 @@
-package se.linda.mutant_creator.Player_functions.baseFunctions;
+package se.linda.mutant_creator.playerfunctions.basefunctions;
 
 import se.linda.mutant_creator.enums.fardigheter;
 import se.linda.mutant_creator.enums.klasser;
 import se.linda.mutant_creator.enums.specFardigheter;
-import java.util.HashMap;
+
 import java.util.Map;
 
 import static se.linda.mutant_creator.enums.specFardigheter.*;

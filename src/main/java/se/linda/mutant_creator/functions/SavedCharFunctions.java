@@ -4,6 +4,8 @@ import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import net.minidev.json.parser.JSONParser;
 import net.minidev.json.parser.ParseException;
+import se.linda.mutant_creator.Constants;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -12,14 +14,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class savedCharFunctions {
+public class SavedCharFunctions {
     private final List<String> charNames = new ArrayList<>();
-    private final String path = "src/main/java/se/linda/mutant_creator/characters/%s.json";
     private final JSONParser parser = new JSONParser();
     private FileReader reader;
 
     private void getCharacters() {
-        File folder = new File("src/main/java/se/linda/mutant_creator/characters");
+        File folder = new File(Constants.CHAR_PATH);
         File[] listOfFiles = folder.listFiles();
         assert listOfFiles != null;
         for (File file : listOfFiles) {
@@ -35,16 +36,16 @@ public class savedCharFunctions {
     }
 
     private JSONArray getRawData(String name) throws ParseException, FileNotFoundException {
-        this.reader = new FileReader(path.formatted(name));
+        this.reader = new FileReader(Constants.CHAR_SAVE_PATH.formatted(name));
         return (JSONArray) parser.parse(reader);
     }
 
-    public JSONObject getTypeData(String name, String Key) throws ParseException, FileNotFoundException {
-        this.reader = new FileReader(path.formatted(name));
+    public JSONObject getTypeData(String name, String key) throws ParseException, FileNotFoundException {
+        this.reader = new FileReader(Constants.CHAR_SAVE_PATH.formatted(name));
         int index = -1;
         for (Object object : (JSONArray) parser.parse(reader)) {
             JSONObject jsonObject = (JSONObject) object;
-            if (jsonObject.containsKey(Key)) {
+            if (jsonObject.containsKey(key)) {
                 index = getRawData(name).indexOf(object);
             }
         }
@@ -52,7 +53,7 @@ public class savedCharFunctions {
     }
 
     public <T> Map<T, Integer> makeMap(String input, T[] enums) {
-        converters con = new converters();
+        Converters con = new Converters();
         Map<T, Integer> map = new HashMap<>();
         String[] tempString = input
                 .replace("{","")

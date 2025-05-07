@@ -6,9 +6,9 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import se.linda.mutant_creator.fxFunctions.Grid;
-import se.linda.mutant_creator.fxPages.mainPage;
-import se.linda.mutant_creator.fxPages.savedCharPage;
+import se.linda.mutant_creator.fxfunctions.Grid;
+import se.linda.mutant_creator.fxpages.MainPage;
+import se.linda.mutant_creator.fxpages.SavedCharPage;
 
 public class Main extends Application {
     private final Grid grid = new Grid();
@@ -19,7 +19,7 @@ public class Main extends Application {
 
     private void buttonFunction() {
         charCreator.setOnAction(_ -> {
-            mainPage main = new mainPage();
+            MainPage main = new MainPage();
             try {
                 main.start(new Stage());
             } catch (Exception e) {
@@ -27,7 +27,7 @@ public class Main extends Application {
             }
         });
         savedChars.setOnAction(_ -> {
-            savedCharPage saved = new savedCharPage();
+            SavedCharPage saved = new SavedCharPage();
             try {
                 saved.start(new Stage());
             } catch (Exception e) {

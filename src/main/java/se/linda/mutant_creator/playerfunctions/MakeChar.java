@@ -1,4 +1,4 @@
-package se.linda.mutant_creator.Player_functions;
+package se.linda.mutant_creator.playerfunctions;
 
 import se.linda.mutant_creator.enums.*;
 

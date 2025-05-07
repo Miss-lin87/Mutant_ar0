@@ -44,12 +44,14 @@
     </TitledPane>
 
     <TitledPane text="Equipment" expanded="false">
+        <GridPane>
         <Label text="Patroner: " GridPane.rowIndex="0" GridPane.columnIndex="0"/>
         <Text fx:id="patronerValue" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
         <Label text="Krubb: " GridPane.rowIndex="1" GridPane.columnIndex="0"/>
         <Text fx:id="krubbValue" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
         <Label text="Vatten: " GridPane.rowIndex="2" GridPane.columnIndex="0"/>
         <Text fx:id="vattenValue" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        </GridPane>
     </TitledPane>
 
     <Button text="Close" fx:id="closeButton"/>

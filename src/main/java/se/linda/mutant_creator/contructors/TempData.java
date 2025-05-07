@@ -2,20 +2,20 @@ package se.linda.mutant_creator.contructors;
 
 import net.minidev.json.parser.ParseException;
 import se.linda.mutant_creator.enums.*;
-import se.linda.mutant_creator.functions.savedCharFunctions;
+import se.linda.mutant_creator.functions.SavedCharFunctions;
 import java.io.FileNotFoundException;
 import java.util.Map;
 
-public class tempData {
+public class TempData {
     private final String name;
     private final klasser klass;
     private final Map<fardigheter, Integer> skills;
     private final Map<stats, Integer> charStats;
     private final Map<specFardigheter, Integer> specSkill;
     private final Map<equipment, Integer> backpack;
-    private final savedCharFunctions saved = new savedCharFunctions();
+    private final SavedCharFunctions saved = new SavedCharFunctions();
 
-    public tempData(String name) throws FileNotFoundException, ParseException {
+    public TempData(String name) throws FileNotFoundException, ParseException {
         this.name = name;
         this.klass = klasser.valueOf(saved.getTypeData(name, "klass").getAsString("klass"));
         this.skills = saved.makeMap(saved.getTypeData(name, "skills").getAsString("skills"), fardigheter.values());

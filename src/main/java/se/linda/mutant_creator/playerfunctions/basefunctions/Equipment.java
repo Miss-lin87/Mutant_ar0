@@ -1,9 +1,9 @@
-package se.linda.mutant_creator.Player_functions.baseFunctions;
+package se.linda.mutant_creator.playerfunctions.basefunctions;
 
 import se.linda.mutant_creator.enums.equipment;
 import se.linda.mutant_creator.enums.klasser;
-import se.linda.mutant_creator.functions.diceRolls;
-import se.linda.mutant_creator.functions.funcs;
+import se.linda.mutant_creator.functions.DiceRolls;
+import se.linda.mutant_creator.functions.Funcs;
 
 import java.util.EnumMap;
 import java.util.Map;
@@ -13,8 +13,8 @@ import static se.linda.mutant_creator.enums.equipment.*;
 
 
 public class Equipment {
-    private final diceRolls D = new diceRolls();
-    private final Optional<Integer> one = new funcs().getOptional(1);
+    private final DiceRolls D = new DiceRolls();
+    private final Optional<Integer> one = new Funcs().getOptional(1);
     private EnumMap<equipment, Integer> backpack = new EnumMap<>(Map.of(PATRONER, D.D6(one), KRUBB, D.D6(one), VATTEN, D.D6(one)));
 
     private void makeEqupiment(klasser klass) {

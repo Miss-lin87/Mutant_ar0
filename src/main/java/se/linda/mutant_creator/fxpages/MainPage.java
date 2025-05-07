@@ -1,4 +1,4 @@
-package se.linda.mutant_creator.fxPages;
+package se.linda.mutant_creator.fxpages;
 
 import javafx.application.Application;
 import javafx.scene.control.Alert;
@@ -6,13 +6,13 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import se.linda.mutant_creator.Player_functions.MakeChar;
-import se.linda.mutant_creator.fxFunctions.SaveChar;
-import se.linda.mutant_creator.fxFunctions.Grid;
-import se.linda.mutant_creator.fxFunctions.stageSetter;
+import se.linda.mutant_creator.playerfunctions.MakeChar;
+import se.linda.mutant_creator.fxfunctions.SaveChar;
+import se.linda.mutant_creator.fxfunctions.Grid;
+import se.linda.mutant_creator.fxfunctions.StageSetter;
 import java.io.IOException;
 
-public class mainPage extends Application {
+public class MainPage extends Application {
     private final Button newChar = new Button("Make Character");
     private final Button equipment = new Button("Equipment");
     private final Button save = new Button("Save");
@@ -23,7 +23,7 @@ public class mainPage extends Application {
 
     private void buttonFuctions() {
         newChar.setOnAction(_ -> {
-            makeCharPage newplayer = new makeCharPage();
+            MakeCharPage newplayer = new MakeCharPage();
             try {
                 newplayer.start(new Stage());
             } catch (IOException g) {
@@ -37,7 +37,7 @@ public class mainPage extends Application {
                 error.show();
             } else {
                 try {
-                    new equipmentPage().start(new Stage());
+                    new EquipmentPage().start(new Stage());
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -80,9 +80,8 @@ public class mainPage extends Application {
 
     @Override
     public void start(Stage stage) {
-        stageSetter set = new stageSetter();
         populateGrid();
-        set.setStage(stage, mainGrid, 340,275,"Main");
+        StageSetter.setStage(stage, mainGrid, 340,275,"Main");
     }
 
     public static void main() {

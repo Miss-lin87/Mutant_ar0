@@ -10,8 +10,9 @@ import java.util.List;
 import static se.linda.mutant_creator.enums.klasser.*;
 import static se.linda.mutant_creator.enums.specFardigheter.*;
 
-public class converters {
+public class Converters {
 
+    //TODO make better stuff
     public <T> T stringTOEnum(String name, T[] enumValues) {
         T temp = null;
         name = name.toUpperCase()

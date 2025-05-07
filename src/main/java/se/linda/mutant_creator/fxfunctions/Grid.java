@@ -1,4 +1,4 @@
-package se.linda.mutant_creator.fxFunctions;
+package se.linda.mutant_creator.fxfunctions;
 
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -32,10 +32,10 @@ public class Grid {
         grid.add(node, colum, row);
     }
 
-    public void addNodes(GridPane grid, int row, int colum, Node... nodes) {
+    public void addNodes(GridPane grid, int row, int colum, Node ...nodes) {
         int startRow = 0;
-        for (Node N : nodes) {
-            grid.add(N, colum, row + startRow);
+        for (Node node : nodes) {
+            grid.add(node, colum, row + startRow);
             startRow ++;
         }
     }

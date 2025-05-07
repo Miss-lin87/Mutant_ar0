@@ -1,4 +1,4 @@
-package se.linda.mutant_creator.fxControllers;
+package se.linda.mutant_creator.fxcontrollers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,10 +14,10 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import net.minidev.json.parser.ParseException;
-import se.linda.mutant_creator.contructors.fardighet;
+import se.linda.mutant_creator.contructors.Fardighet;
 import se.linda.mutant_creator.enums.fardigheter;
 import se.linda.mutant_creator.enums.specFardigheter;
-import se.linda.mutant_creator.contructors.tempData;
+import se.linda.mutant_creator.contructors.TempData;
 
 import java.io.FileNotFoundException;
 import java.net.URL;
@@ -26,8 +26,8 @@ import java.util.ResourceBundle;
 import static se.linda.mutant_creator.enums.equipment.*;
 import static se.linda.mutant_creator.enums.stats.*;
 
-public class savedController implements Initializable {
-    private final tempData player;
+public class SavedController implements Initializable {
+    private final TempData player;
     @FXML private Text playerName;
     @FXML private Text playerklass;
     @FXML private Text playerStyrka;
@@ -37,13 +37,13 @@ public class savedController implements Initializable {
     @FXML private Text patronerValue;
     @FXML private Text krubbValue;
     @FXML private Text vattenValue;
-    @FXML private TableView<fardighet> skillsTable;
-    @FXML private TableColumn<fardighet, String> nameColumn = new TableColumn<>("Name");
-    @FXML private TableColumn<fardighet, String> valueColumn = new TableColumn<>("Value");
+    @FXML private TableView<Fardighet> skillsTable;
+    @FXML private TableColumn<Fardighet, String> nameColumn = new TableColumn<>("Name");
+    @FXML private TableColumn<Fardighet, String> valueColumn = new TableColumn<>("Value");
     @FXML private Button closeButton = new Button("Close");
 
-    public savedController(String name) throws FileNotFoundException, ParseException {
-        this.player = new tempData(name);
+    public SavedController(String name) throws FileNotFoundException, ParseException {
+        this.player = new TempData(name);
     }
 
     private void setBaseInfo() {
@@ -62,10 +62,10 @@ public class savedController implements Initializable {
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("skillName"));
         valueColumn.setCellValueFactory(new PropertyValueFactory<>("skillValue"));
         for (fardigheter skill : player.getSkills().keySet()) {
-            skillsTable.getItems().add(new fardighet(skill.getName(), String.valueOf(player.getSkills().get(skill))));
+            skillsTable.getItems().add(new Fardighet(skill.getName(), String.valueOf(player.getSkills().get(skill))));
         }
         for (specFardigheter skill : player.getSpecSkill().keySet()) {
-            skillsTable.getItems().add(new fardighet(skill.getName(), String.valueOf(player.getSpecSkill().get(skill))));
+            skillsTable.getItems().add(new Fardighet(skill.getName(), String.valueOf(player.getSpecSkill().get(skill))));
         }
     }
 

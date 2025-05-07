@@ -9,7 +9,7 @@ public class diceRollsTest {
 
     @Test
     public void testRollD6() {
-        diceRolls die = new diceRolls();
+        DiceRolls die = new DiceRolls();
         for (int i = 0; i < 100; i++) {
             int result = die.D6(Optional.of(1));
             Assertions.assertTrue(result >= 1 && result <= 6);

@@ -1,9 +1,9 @@
-package se.linda.mutant_creator.Player_functions.baseFunctions;
+package se.linda.mutant_creator.playerfunctions.basefunctions;
 
 import se.linda.mutant_creator.enums.klasser;
 import se.linda.mutant_creator.enums.talanger;
 
-public class playerKlass {
+public class PlayerKlass {
     private final klasser klass;
     private final Basestats basestats;
     private final Talent talents;
@@ -11,7 +11,7 @@ public class playerKlass {
     private final Equipment equipment;
     private final Fardigheter skills;
 
-    public playerKlass(klasser klass){
+    public PlayerKlass(klasser klass){
         this.klass = klass;
         this.basestats = new Basestats(klass);
         this.talents = new Talent(klass);

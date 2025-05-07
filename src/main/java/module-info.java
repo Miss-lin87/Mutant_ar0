@@ -14,14 +14,14 @@ module se.linda.mutant_creator {
 
     opens se.linda.mutant_creator to javafx.fxml;
     exports se.linda.mutant_creator;
-    opens se.linda.mutant_creator.fxPages to javafx.fxml;
-    exports se.linda.mutant_creator.fxPages;
-    opens se.linda.mutant_creator.fxFunctions to javafx.fxml;
-    exports se.linda.mutant_creator.fxFunctions;
+    opens se.linda.mutant_creator.fxpages to javafx.fxml;
+    exports se.linda.mutant_creator.fxpages;
+    opens se.linda.mutant_creator.fxfunctions to javafx.fxml;
+    exports se.linda.mutant_creator.fxfunctions;
     opens se.linda.mutant_creator.functions to javafx.fxml;
     exports se.linda.mutant_creator.functions;
-    opens se.linda.mutant_creator.fxControllers to javafx.fxml;
-    exports se.linda.mutant_creator.fxControllers;
+    opens se.linda.mutant_creator.fxcontrollers to javafx.fxml;
+    exports se.linda.mutant_creator.fxcontrollers;
     opens se.linda.mutant_creator.contructors to javafx.fxml;
     exports se.linda.mutant_creator.contructors;
 }

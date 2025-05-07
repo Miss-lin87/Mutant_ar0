@@ -1,10 +1,12 @@
 package se.linda.mutant_creator.functions;
+import se.linda.mutant_creator.Constants;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class funcs {
+public class Funcs {
     private final List<String> charNames = new ArrayList<>();
 
     public <T> Optional<T> getOptional(T input) {
@@ -12,7 +14,7 @@ public class funcs {
     }
 
     private void getCharacters() {
-        File folder = new File("src/main/java/se/linda/mutant_creator/characters");
+        File folder = new File(Constants.CHAR_PATH);
         File[] listOfFiles = folder.listFiles();
         assert listOfFiles != null;
         for (File file : listOfFiles) {

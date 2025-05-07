@@ -3,9 +3,10 @@ package se.linda.mutant_creator.functions;
 import java.util.Optional;
 import java.util.Random;
 
-public class diceRolls {
+public class DiceRolls {
     private final Random rand = new Random();
 
+    //TODO make it overload again
     public int D6(Optional<Integer> times) {
         if (times.isPresent() && times.get() > 0) {
             return roll(times.get());
@@ -30,6 +31,4 @@ public class diceRolls {
     public String D66(){
         return roll(1) + "" + roll(1);
     }
-
-
 }

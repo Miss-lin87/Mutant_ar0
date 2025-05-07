@@ -1,10 +1,10 @@
 package se.linda.mutant_creator.contructors;
 
-public class fardighet {
+public class Fardighet {
     private String skillName;
     private String skillValue;
 
-    public fardighet(String skillName, String skillValue) {
+    public Fardighet(String skillName, String skillValue) {
         this.skillName = skillName;
         this.skillValue = skillValue;
     }
