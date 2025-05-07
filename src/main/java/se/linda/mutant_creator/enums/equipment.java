@@ -1,15 +1,13 @@
 package se.linda.mutant_creator.enums;
 
 public enum equipment {
-    PATRONER("Patroner",0),
-    KRUBB("Krubb",0),
-    VATTEN("Vatten",0);
+    PATRONER("Patroner"),
+    KRUBB("Krubb"),
+    VATTEN("Vatten");
 
     public final String name;
-    public final int value;
 
-    equipment (String name, int value) {
+    equipment (String name) {
         this.name = name;
-        this.value = value;
     }
 }

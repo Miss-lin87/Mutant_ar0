@@ -6,29 +6,28 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import se.linda.mutant_creator.fxFunctions.Grid;
-import se.linda.mutant_creator.fxapps.mainApplication;
-import se.linda.mutant_creator.fxFunctions.savedCharsController;
+import se.linda.mutant_creator.fxfunctions.Grid;
+import se.linda.mutant_creator.fxpages.MainPage;
+import se.linda.mutant_creator.fxpages.SavedCharPage;
 
 public class Main extends Application {
-    private Grid grid = new Grid();
-    private GridPane mainGrid = grid.getGrid(10,10,false);
-    private Button charCreator = new Button("Character Creator");
-    private Button savedChars = new Button("Saved Characters");
-    private Text welcome = new Text("Welcome \n select an option");
+    private final Grid grid = new Grid();
+    private final GridPane mainGrid = grid.getGrid(10,10,false);
+    private final Button charCreator = new Button("Character Creator");
+    private final Button savedChars = new Button("Saved Characters");
+    private final Text welcome = new Text("Welcome\nSelect an option");
 
-    private void buttonFunction(Stage stage) {
-        charCreator.setOnAction(EventHander -> {
-            mainApplication main = new mainApplication();
+    private void buttonFunction() {
+        charCreator.setOnAction(_ -> {
+            MainPage main = new MainPage();
             try {
-                stage.close();
                 main.start(new Stage());
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         });
-        savedChars.setOnAction(EventHandler -> {
-            savedCharsController saved = new savedCharsController();
+        savedChars.setOnAction(_ -> {
+            SavedCharPage saved = new SavedCharPage();
             try {
                 saved.start(new Stage());
             } catch (Exception e) {
@@ -37,10 +36,12 @@ public class Main extends Application {
         });
     }
 
-    private void populateGrid() {
-        mainGrid.add(welcome, 0, 0);
-        mainGrid.add(charCreator, 0, 1);
-        mainGrid.add(savedChars, 0, 2);
+    private void populateGrid(Stage stage) {
+        grid.addNodes(mainGrid,0,0,
+                welcome,
+                charCreator,
+                savedChars,
+                grid.closeButton(stage));
     }
 
     private void setStage(Stage stage) {
@@ -51,9 +52,9 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
-        populateGrid();
-        buttonFunction(stage);
+    public void start(Stage stage) {
+        populateGrid(stage);
+        buttonFunction();
         setStage(stage);
     }
 }

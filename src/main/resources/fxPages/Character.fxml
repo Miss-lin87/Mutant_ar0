@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<VBox spacing="10" xmlns="http://javafx.com/javafx/8.0.171"
+      xmlns:fx="http://javafx.com/fxml/1">
+    <Label text="Character Sheet" style="-fx-font-size: 24px;"/>
+
+    <TitledPane text="Player">
+        <GridPane hgap="10" vgap="5">
+            <Label text="Name: " GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <Text fx:id="playerName" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="Klass: " GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Text fx:id="playerklass" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        </GridPane>
+    </TitledPane>
+    <TitledPane text="Grundegenskaper" expanded="false">
+        <GridPane hgap="10" vgap="5">
+            <Label text="Styrka:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <Text fx:id="playerStyrka" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="Kyla:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Text fx:id="playerKyla" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label text="Skärpa:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <Text fx:id="playerSkarpa" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <Label text="Känsla :" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <Text fx:id="playerKänsla" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        </GridPane>
+    </TitledPane>
+
+
+    <TitledPane text="Färdigheter" expanded="false">
+        <TableView fx:id="skillsTable">
+            <columns>
+                <TableColumn fx:id="nameColumn" text="Färdighet"/>
+                <TableColumn fx:id="valueColumn" text="Värde"/>
+            </columns>
+        </TableView>
+    </TitledPane>
+
+    <TitledPane text="Equipment" expanded="false">
+        <GridPane>
+        <Label text="Patroner: " GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <Text fx:id="patronerValue" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        <Label text="Krubb: " GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <Text fx:id="krubbValue" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        <Label text="Vatten: " GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <Text fx:id="vattenValue" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        </GridPane>
+    </TitledPane>
+
+    <Button text="Close" fx:id="closeButton"/>
+
+</VBox>
