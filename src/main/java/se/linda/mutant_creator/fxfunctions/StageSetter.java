@@ -5,12 +5,16 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class StageSetter {
+    private static Scene mainScene;
 
-    //TO DO make static
     public static void setStage(Stage stage, GridPane grid, int V, int V1, String title) {
-        Scene mainScene = new Scene(grid,V,V1);
+        mainScene = new Scene(grid, V, V1);
         stage.setTitle(title);
         stage.setScene(mainScene);
         stage.show();
+    }
+
+    public static Scene getMainScene() {
+        return mainScene;
     }
 }

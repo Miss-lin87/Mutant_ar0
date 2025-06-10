@@ -12,6 +12,8 @@ import se.linda.mutant_creator.fxfunctions.Grid;
 import se.linda.mutant_creator.fxfunctions.StageSetter;
 import java.io.IOException;
 
+import static se.linda.mutant_creator.fxfunctions.StageSetter.setStage;
+
 public class MainPage extends Application {
     private final Button newChar = new Button("Make Character");
     private final Button equipment = new Button("Equipment");
@@ -81,7 +83,7 @@ public class MainPage extends Application {
     @Override
     public void start(Stage stage) {
         populateGrid();
-        StageSetter.setStage(stage, mainGrid, 340,275,"Main");
+        setStage(stage, mainGrid, 340,275,"Main");
     }
 
     public static void main() {

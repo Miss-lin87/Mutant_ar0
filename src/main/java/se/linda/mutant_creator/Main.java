@@ -7,12 +7,16 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import se.linda.mutant_creator.fxfunctions.Grid;
+import se.linda.mutant_creator.fxfunctions.StageSetter;
 import se.linda.mutant_creator.fxpages.MainPage;
 import se.linda.mutant_creator.fxpages.SavedCharPage;
+
+import static se.linda.mutant_creator.fxfunctions.StageSetter.setStage;
 
 public class Main extends Application {
     private final Grid grid = new Grid();
     private final GridPane mainGrid = grid.getGrid(10,10,false);
+    private final StageSetter stageSetter = new StageSetter();
     private final Button charCreator = new Button("Character Creator");
     private final Button savedChars = new Button("Saved Characters");
     private final Text welcome = new Text("Welcome\nSelect an option");
@@ -44,17 +48,10 @@ public class Main extends Application {
                 grid.closeButton(stage));
     }
 
-    private void setStage(Stage stage) {
-        Scene scene = new Scene(mainGrid, 300, 275);
-        stage.setScene(scene);
-        stage.setTitle("Mutant Character Creator");
-        stage.show();
-    }
-
     @Override
     public void start(Stage stage) {
         populateGrid(stage);
         buttonFunction();
-        setStage(stage);
+        setStage(stage, mainGrid, 300, 275, "Mutant Character Creator");
     }
 }
